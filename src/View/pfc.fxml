@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="View.PfcController">
+   <children>
+      <Label fx:id="nome_etprenom" layoutX="420.0" layoutY="82.0" text="Name and LastName" />
+      <Label fx:id="usnnom" layoutX="420.0" layoutY="126.0" text="Username" />
+      <Label layoutX="420.0" layoutY="173.0" text="Label" />
+      <Label layoutX="194.0" layoutY="192.0" text="Label" />
+      <Label layoutX="312.0" layoutY="192.0" text="Label" />
+      <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" layoutX="94.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

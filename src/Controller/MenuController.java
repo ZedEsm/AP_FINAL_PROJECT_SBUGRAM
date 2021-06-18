@@ -68,10 +68,10 @@ public MenuController(){
 //            new PageLoader().load("profile");
 //           ((Node)(a.getSource())).getScene().getWindow().hide();
                 FXMLLoader loader;
-               loader = new FXMLLoader(getClass().getResource("/View/profile.fxml"));
+               loader = new FXMLLoader(getClass().getResource("/View/person_profile.fxml"));
              
                 Parent root=loader.load();
-                  ProfileController mt = loader.getController();
+                Person_profileController mt = loader.getController();
                 mt.init(usn);
                  Scene scene = new Scene(root);
                     Stage stage = new Stage();
