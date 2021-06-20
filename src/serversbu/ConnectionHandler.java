@@ -4,7 +4,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import Model.Post;
 import Model.PrivacyStatus;
-
+import java.util.ArrayList;
+import java.util.Date;
 
 
 public class ConnectionHandler {
@@ -152,6 +153,7 @@ public class ConnectionHandler {
                                 byte[] byt = new byte[fin.available()];
                                 fin.read(byt);
                                 String file_content = new String(byt);
+                                fin.close();
                                String[] asw = file_content.split("\n");
                                 for (int i = 0; i < asw.length; i++) {
                                   String[] a= asw[i].split(",");
@@ -164,10 +166,11 @@ public class ConnectionHandler {
 //                                         FileInputStream finn = new FileInputStream(vf);
 System.out.println("serve");
                                        FileInputStream finn = new FileInputStream(usnn+"_follower.dat");
-                                         System.out.println("folo12");
+                                         System.out.println("folo12==="+finn.available());
                                         byte[] byt1 = new byte[finn.available()];
                                         finn.read(byt1);
                                         String followers = new String(byt1);
+                                        finn.close();
                                         String[] asw1;
                                         if(followers.trim().length()>0){
                                         asw1 = followers.split("\n");
@@ -179,9 +182,11 @@ System.out.println("serve");
                                         
                                         FileInputStream followi = new FileInputStream(usnn+"_following.dat");
 //                                       FileInputStream followi = new FileInputStream(usnn+vfo);
+                                        System.out.println("fpppp==="+followi.available());
                                         byte[] byt2 = new byte[followi.available()];
                                         followi.read(byt2);
                                         String following = new String(byt2);
+                                        followi.close();
                                         String[] asw2;
                                         if(following.trim().length()>0){
                                         asw2 = following.split("\n");
@@ -190,7 +195,7 @@ System.out.println("serve");
                                            asw2=new String[0];
                                         }
                                         
-                                        
+                                        System.out.println("fpppp===9999999");
                                         outputStream.writeObject(new String(a[1]+","+a[2]+","+a[4]+","+a[5]+","+asw1.length+","+asw2.length));
                                         outputStream.flush();
                                         userexist = true;
@@ -198,6 +203,7 @@ System.out.println("serve");
                                   }
                                   
                                 }
+                                System.out.println("fpppp===7777777");
                                 if(userexist==true){
                                        userexist=false;
                                       
@@ -236,7 +242,7 @@ System.out.println("serve");
                        pos.setStatus(PrivacyStatus.PUBLIC);
                        FileOutputStream fop = new FileOutputStream("post.dat",true);
                         
-                         fop.write((pos.getWriter()+","+pos.getTitle()+","+pos.getDescription()+","+pos.getStatus()+"\n").getBytes());
+                         fop.write((pos.getWriter()+","+pos.getTitle()+","+pos.getDescription()+","+pos.getStatus()+","+(new Date()).toString()+"\n").getBytes());
                          fop.close();
                           outputStream.writeObject(new String("post is delivered successfuly"));
                                         outputStream.flush();
@@ -246,6 +252,78 @@ System.out.println("serve");
                                 
                       
                     }
+                     else if(cmd[0].equalsIgnoreCase("choose_follower")){
+                           String follower_usn = cmd[1];
+                           String main_usn = cmd[2];
+                            FileInputStream fi = new FileInputStream(main_usn+"_following.dat");  
+                                        byte[] byt1 = new byte[fi.available()];
+                                        fi.read(byt1);
+                                        String followers = new String(byt1);
+                                        fi.close();
+                                        if(followers.indexOf(follower_usn)<0){
+                                        
+                                            FileOutputStream finn = new FileOutputStream(main_usn+"_following.dat",true);
+                                            //follower_usn+="\n";
+                                            finn.write((follower_usn+"\n").getBytes());
+                                            finn.close();
+
+                                             FileOutputStream finn1 = new FileOutputStream(follower_usn+"_follower.dat",true);
+                                           // main_usn+="\n";
+                                            finn1.write((main_usn+"\n").getBytes());
+                                            finn1.close();
+                                             outputStream.writeObject("follower added succssesfully");
+                                             outputStream.flush();
+                            
+                                        }
+                                        else{
+                                             outputStream.writeObject("you already have this user as follower");
+                                             outputStream.flush();
+                                        }
+                           
+                     }
+                   else if(cmd[0].equalsIgnoreCase("select_following_list")){
+                        String main_usn = cmd[1];
+                            FileInputStream fi = new FileInputStream(main_usn+"_following.dat");  
+                                        byte[] byt1 = new byte[fi.available()];
+                                        fi.read(byt1);
+                                        String following_list = new String(byt1);
+                                        following_list.trim();
+                                        fi.close();
+                                        FileInputStream fip = new FileInputStream("post.dat");
+                                        byte[] byt2 = new byte[fip.available()];
+                                        fip.read(byt2);
+                                        String posts = new String(byt2);
+                                        fip.close();
+                                        ArrayList<Post> post_list = new ArrayList<Post>();
+                                        String[] post_line=posts.split("\n");
+                                        for (int i = 0; i < post_line.length; i++) {
+                                          String current_post = post_line[i];
+                                          String[] current_post_details = current_post.split(",");
+                                          if(current_post_details[0].equals(main_usn)){
+                                              Post pos = new Post();
+                                              pos.setWriter(current_post_details[0]);
+                                              pos.setTitle(current_post_details[1]);
+                                              pos.setPost_delivered_time(new Date(current_post_details[4]));
+                                              pos.setDescription(current_post_details[2]);
+                                              if(current_post_details[3].equals(PrivacyStatus.PUBLIC.toString())){
+                                                  pos.setStatus(PrivacyStatus.PUBLIC);
+                                              }
+                                              else{
+                                                  pos.setStatus(PrivacyStatus.PRIVATE);
+                                                  
+                                              }
+                                              post_list.add(pos);
+                                          }
+                                          else if(following_list.indexOf(current_post_details[0])>=0){
+                                              //code folling post ezafe
+                                           
+                                          }
+                            
+                                        }
+                                          outputStream.writeObject(following_list);
+                                          outputStream.flush();
+                            
+                   }
                         
              
                 }
