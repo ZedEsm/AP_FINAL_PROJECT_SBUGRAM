@@ -7,6 +7,8 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -15,7 +17,7 @@
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="330.0" prefWidth="398.0" style="-fx-background-color: #002900;">
          <children>
             <TextField fx:id="title_field" layoutX="70.0" layoutY="53.0" prefHeight="26.0" prefWidth="130.0" promptText="title" />
-            <TextArea fx:id="description_field" layoutX="49.0" layoutY="89.0" prefHeight="139.0" prefWidth="302.0" promptText="description" />
+            <TextArea fx:id="description_field" layoutX="49.0" layoutY="89.0"  prefHeight="139.0" prefWidth="302.0" promptText="description" />
             <MenuButton layoutX="230.0" layoutY="54.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="113.0" text="Privacy Status" textFill="#f00566">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#publicPost" text="public" />
@@ -29,10 +31,11 @@
                <font>
                   <Font name="Arial Black" size="12.0" />
                </font></Button>
-            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#showmenu" style="-fx-background-image: url('/Images/menu.jpg')" text="menu" textFill="#f00566">
-               <font>
-                  <Font name="Alberta Regular" size="13.0" />
-               </font></Button>
+            <ImageView fitHeight="36.0" fitWidth="47.0" layoutX="10.0" layoutY="12.0" onMouseClicked="#showmenu" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/menu.jpg" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #181818;">
          <children>

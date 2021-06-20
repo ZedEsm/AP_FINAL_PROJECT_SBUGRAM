@@ -2,20 +2,13 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" maxHeight="600.0" maxWidth="435.0" prefHeight="600.0" prefWidth="396.0" style="-fx-background-color: #002900;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProfileController">
    <children>
-      <Button layoutX="69.0" layoutY="215.0" mnemonicParsing="false" onAction="#follower" text="Follower" textFill="#ff0a70">
-         <font>
-            <Font name="Cooper Black" size="12.0" />
-         </font></Button>
-      <Button layoutX="239.0" layoutY="215.0" mnemonicParsing="false" onAction="#following" text="Following" textFill="#ff0a70">
-         <font>
-            <Font name="Cooper Black" size="12.0" />
-         </font></Button>
       <Label fx:id="nome_etprenom" layoutX="210.0" layoutY="41.0" prefHeight="18.0" prefWidth="137.0" text="Name and LastName" textFill="#6af732">
          <font>
             <Font name="Segoe UI Black" size="13.0" />
@@ -28,22 +21,37 @@
          <font>
             <Font name="Segoe UI Black" size="13.0" />
          </font></Label>
-      <ImageView fx:id="img" fitHeight="134.0" fitWidth="162.0" layoutX="24.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="img" fitHeight="128.0" fitWidth="138.0" layoutX="48.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" />
       <Button layoutX="57.0" layoutY="276.0" mnemonicParsing="false" onAction="#Follow_action" prefHeight="26.0" prefWidth="62.0" text="Follow" />
-      <Button layoutX="158.0" layoutY="276.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="62.0" text="Block" textFill="#360000" />
-      <Button layoutX="245.0" layoutY="276.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" text="Mute" textFill="#ff0a70" />
-      <Button layoutX="65.0" layoutY="335.0" mnemonicParsing="false" text="Repost" />
-      <Button layoutX="166.0" layoutY="335.0" mnemonicParsing="false" text="see more" />
-      <Button layoutX="258.0" layoutY="335.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="53.0" text="like" />
-      <Label fx:id="followers_conter" layoutX="82.0" layoutY="177.0" text="-1" textFill="#ec1212">
+      <Button layoutX="158.0" layoutY="276.0" mnemonicParsing="false" onAction="#block_action" prefHeight="26.0" prefWidth="62.0" text="Block" textFill="#360000" />
+      <Button layoutX="245.0" layoutY="276.0" mnemonicParsing="false" onAction="#mute_action" prefHeight="26.0" prefWidth="78.0" text="Mute" textFill="#ff0a70" />
+      <Button layoutX="65.0" layoutY="335.0" mnemonicParsing="false" onAction="#repost_action" text="Repost" />
+      <Button layoutX="166.0" layoutY="335.0" mnemonicParsing="false" onAction="#seemore_action" text="see more" />
+      <Button layoutX="258.0" layoutY="335.0" mnemonicParsing="false" onAction="#like_action" prefHeight="26.0" prefWidth="53.0" text="like" />
+      <Label fx:id="followers_conter" layoutX="140.0" layoutY="215.0" text="-1" textFill="#ec1212">
          <font>
             <Font name="Cooper Black" size="19.0" />
          </font>
       </Label>
-      <Label fx:id="following_counter" layoutX="244.0" layoutY="179.0" text="-1" textFill="#cf0f0f">
+      <Label fx:id="following_counter" layoutX="332.0" layoutY="217.0" text="-1" textFill="#cf0f0f">
          <font>
             <Font name="Cooper Black" size="17.0" />
          </font>
       </Label>
+      <Label layoutX="51.0" layoutY="217.0" text="followers" textFill="#04ef28">
+         <font>
+            <Font name="Cooper Black" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="236.0" layoutY="217.0" text="followings" textFill="#00ff10">
+         <font>
+            <Font name="Cooper Black" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="35.0" fitWidth="39.0" layoutX="14.0" layoutY="13.0" onMouseClicked="#showmenu" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/menu.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

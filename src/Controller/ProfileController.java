@@ -5,20 +5,17 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.net.URL;
 import java.nio.file.Paths;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class ProfileController{
@@ -31,21 +28,75 @@ public class ProfileController{
     ObjectOutputStream out;
     ObjectInputStream in ;
     public String usn;
+    public String mainusername;
     
-    public void init(String s){
+    public void init(String s,String musn){
         usn=s;
-        System.out.println(usn);
+        mainusername=musn;
+        System.out.println(usn+"50"+musn);
         iner();
         
     }
+    public void showmenu(MouseEvent me){
+        try {
+               FXMLLoader loader;
+               loader = new FXMLLoader(getClass().getResource("/View/Menu.fxml"));
+                Parent root=loader.load();
+                MenuController mt = loader.getController();
+                mt.init(mainusername);
+                 Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.setTitle(mainusername);
+                    stage.show();
+                   ((Node)(me.getSource())).getScene().getWindow().hide();
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+    }
     public void Follow_action(ActionEvent act){
+           Socket clientsocket;
+        try {
+             clientsocket = new Socket("localhost",2020);
+             out = new ObjectOutputStream(clientsocket.getOutputStream());
+             in = new ObjectInputStream(clientsocket.getInputStream());
+                 out.writeObject("choose_follower,"+usn+","+mainusername);
+                 out.flush();
+                  Object os;
+                  os = in.readObject();
+                  String from_Server = os.toString();
+                   System.out.println(from_Server+"f");
+                  if(from_Server.equals("follower added succssesfully")){
+                       Alert alert = new Alert(Alert.AlertType.INFORMATION,from_Server);
+                       alert.setTitle("You Started following "+usn);
+                       alert.showAndWait();
+                       iner();
+                  }
+                  else if(from_Server.equals("you already have this user as follower")){
+                       Alert alert = new Alert(Alert.AlertType.INFORMATION,from_Server);
+                       alert.setTitle(usn+" is in your following list");
+                       alert.showAndWait();
+                  }
+                  else{
+                       Alert alert = new Alert(Alert.AlertType.ERROR,from_Server);
+                       alert.setTitle("following not accepted");
+                       alert.showAndWait(); 
+                  }
+                  //System.out.println(from_Server+"f");
+        }
+        catch(Exception ex){
+            System.out.println(ex+"follow_action");
+        }
     }
-    public void follower(ActionEvent a){
-        
-    }
+  
      public void following(ActionEvent a){
     }
-
+     public void block_action(ActionEvent a){
+     }
+      public void mute_action(ActionEvent a){}
+       public void repost_action(ActionEvent a){}
+        public void seemore_action(ActionEvent a){}
+        public void like_action(ActionEvent a){}
     
     public void iner() {
           Socket clientsocket;

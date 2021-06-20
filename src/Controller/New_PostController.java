@@ -9,11 +9,16 @@ import java.net.Socket;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class New_PostController {
     @FXML
@@ -30,12 +35,27 @@ public class New_PostController {
 
     
 public void Close_form(MouseEvent msv){
-    try {
-            new PageLoader().load("Menu");
-          // ((Node)(msv.getSource())).getScene().getWindow().hide();
-        } catch (IOException ex) {
-            System.out.println(ex);
-        }
+//    try {
+//            new PageLoader().load("Menu");
+//          // ((Node)(msv.getSource())).getScene().getWindow().hide();
+//        } catch (IOException ex) {
+//            System.out.println(ex);
+//        }
+//try {
+//               FXMLLoader loader;
+//               loader = new FXMLLoader(getClass().getResource("/View/Menu.fxml"));
+//                Parent root=loader.load();
+//                MenuController mt = loader.getController();
+//                mt.init(mainusername);
+//                 Scene scene = new Scene(root);
+//                    Stage stage = new Stage();
+//                    stage.setScene(scene);
+//                    stage.setTitle(mainusername);
+//                    stage.show();
+//                   ((Node)(me.getSource())).getScene().getWindow().hide();
+//        } catch (IOException ex) {
+//            System.out.println(ex);
+//        }
 }
 public void Publish_m(ActionEvent act){
       try {

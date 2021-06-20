@@ -5,6 +5,9 @@ import Model.PageLoader;
 import Model.Post;
 import Model.PrivacyStatus;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -30,14 +33,37 @@ public class TimelineController {
     public TextArea description_field;
     public ListView<String> postList;
     public String usn;
+    ArrayList<Post> posts = new ArrayList<Post>();
+    Post currentPost = new Post();
+    ObjectOutputStream out;
+    ObjectInputStream in ;
     public void init(String s){
         usn=s;
         System.out.println(usn);
+        iner();
         
+    }
+    public void iner(){
+         Socket clientsocket;
+        try {
+             clientsocket = new Socket("localhost",2020);
+             out = new ObjectOutputStream(clientsocket.getOutputStream());
+             in = new ObjectInputStream(clientsocket.getInputStream());
+                 out.writeObject("select_following_list,"+usn);
+                 out.flush();
+                  Object os;
+                  os = in.readObject();
+                  String from_Server = os.toString();
+                  String following_list = from_Server.trim();
+                  
+                   //System.out.println(from_Server+"tm");
+                
+        }catch(Exception ex){
+            System.out.println(ex);
         }
+    }
     
-    ArrayList<Post> posts = new ArrayList<Post>();
-    Post currentPost = new Post();
+   
 //   @FXML
 //    public void initialize() {
 //        //initialize posts array list to be shown in list view
@@ -90,7 +116,7 @@ public class TimelineController {
             }
         }
     }
-    public void showmenu(ActionEvent act){
+    public void showmenu(MouseEvent act){
         try {
 //            new PageLoader().load("Menu");
 //           ((Node)(act.getSource())).getScene().getWindow().hide();
