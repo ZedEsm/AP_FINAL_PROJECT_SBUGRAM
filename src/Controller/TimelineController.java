@@ -28,10 +28,10 @@ import javafx.stage.Stage;
 
 
 public class TimelineController {
+//   
+//    public TextField title_field;
+//    public TextArea description_field;
    
-    public TextField title_field;
-    public TextArea description_field;
-    public ListView<String> postList;
     public String usn;
     ArrayList<Post> posts = new ArrayList<Post>();
     Post currentPost = new Post();
@@ -51,16 +51,27 @@ public class TimelineController {
              in = new ObjectInputStream(clientsocket.getInputStream());
                  out.writeObject("select_following_list,"+usn);
                  out.flush();
-                  Object os;
-                  os = in.readObject();
-                  String from_Server = os.toString();
-                  String following_list = from_Server.trim();
+                  int Length = in.readInt();
+//                  FXMLLoader loader;
+//                 loader = new FXMLLoader(getClass().getResource("/View/freee.fxml"));
+//                 Parent root=loader.load();
+                   //ListView<FXMLLoader> postList;
+                  for (int i = 0; i <Length; i++) {
+                      
+                       Post post= (Post)in.readObject();
+                       String s=post.toString();
+                        System.out.println(s);
+                        
+                  }
                   
                    //System.out.println(from_Server+"tm");
                 
         }catch(Exception ex){
             System.out.println(ex);
         }
+    }
+    public void refresh(ActionEvent a){
+        iner();
     }
     
    
@@ -86,19 +97,19 @@ public class TimelineController {
 
    
      
-    public  void addPost(ActionEvent actionEvent){
-        currentPost.setWriter("zed esmati");
-        currentPost.setDescription(description_field.getText());
-        currentPost.setTitle(title_field.getText());
-        posts.add(currentPost);
-           
-//        postList.setItems(FXCollections.observableArrayList(posts));
-//        //postList.setCellFactory(postList -> new PostItem());
-       postList.getItems().add(currentPost.getTitle());
-        currentPost=new Post();
-        title_field.setText("");
-        description_field.setText("");
-    }
+//    public  void addPost(ActionEvent actionEvent){
+//        currentPost.setWriter("zed esmati");
+//        currentPost.setDescription(description_field.getText());
+//        currentPost.setTitle(title_field.getText());
+//        posts.add(currentPost);
+//           
+////        postList.setItems(FXCollections.observableArrayList(posts));
+////        //postList.setCellFactory(postList -> new PostItem());
+//       postList.getItems().add(currentPost.getTitle());
+//        currentPost=new Post();
+//        title_field.setText("");
+//        description_field.setText("");
+//    }
     public void publicPost(ActionEvent actionEvent){
         currentPost.setStatus(PrivacyStatus.PUBLIC);
     }
@@ -106,16 +117,16 @@ public class TimelineController {
         currentPost.setStatus(PrivacyStatus.PRIVATE);
     }
 
-    public void showPost(MouseEvent mouseEvent) {
-        Post p = new Post();
-        p.setTitle(postList.getSelectionModel().getSelectedItem());
-        for (int i = 0; i < posts.size(); i++) {
-            if (posts.get(i).equals(p)) {
-                title_field.setText(posts.get(i).getTitle());
-                description_field.setText(posts.get(i).getDescription());
-            }
-        }
-    }
+//    public void showPost(MouseEvent mouseEvent) {
+//        Post p = new Post();
+//        p.setTitle(postList.getSelectionModel().getSelectedItem());
+//        for (int i = 0; i < posts.size(); i++) {
+//            if (posts.get(i).equals(p)) {
+//                title_field.setText(posts.get(i).getTitle());
+//                description_field.setText(posts.get(i).getDescription());
+//            }
+//        }
+//    }
     public void showmenu(MouseEvent act){
         try {
 //            new PageLoader().load("Menu");

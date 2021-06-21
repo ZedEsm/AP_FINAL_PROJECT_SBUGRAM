@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 //String users_o =  usersbox.getSelectionModel().getSelectedItem().toString();
@@ -71,6 +72,23 @@ public class UserlistController {
                System.out.println(ex);
            }
 
+    }
+     public void showmenu(MouseEvent act){
+        try {
+               FXMLLoader loader;
+               loader = new FXMLLoader(getClass().getResource("/View/Menu.fxml"));
+                Parent root=loader.load();
+                MenuController mt = loader.getController();
+                mt.init(usn);
+                 Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.setTitle(usn);
+                    stage.show();
+                   ((Node)(act.getSource())).getScene().getWindow().hide();
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
     }
     
     

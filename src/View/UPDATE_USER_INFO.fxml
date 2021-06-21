@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="574.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UPDATE_USER_INFOController">
+    <children>
+      <Button fx:id="addimg" layoutX="159.0" layoutY="194.0" mnemonicParsing="false" onAction="#choose_img" text="Change Image" />
+      <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" layoutX="110.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="name" layoutX="124.0" layoutY="254.0" promptText="Name" />
+      <TextField fx:id="lname" layoutX="125.0" layoutY="294.0" promptText="Last Name" />
+      <TextField fx:id="usn" editable="false" layoutX="125.0" layoutY="378.0" promptText="Username" />
+      <TextField fx:id="psw" layoutX="125.0" layoutY="424.0" promptText="Password" />
+      <DatePicker fx:id="brd" layoutX="123.0" layoutY="336.0" prefHeight="25.0" prefWidth="166.0" promptText="Birth Date" />
+      <Button layoutX="170.0" layoutY="469.0" mnemonicParsing="false" onAction="#save" text="Save" />
+   </children>
+</AnchorPane>

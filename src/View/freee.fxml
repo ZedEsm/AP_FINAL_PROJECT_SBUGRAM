@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="169.0" prefWidth="507.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="Controller.FreeeController">
+   <children>
+      <Label fx:id="post_writer_name" layoutX="211.0" layoutY="24.0" text="post writer name" />
+      <Label fx:id="post_title" layoutX="266.0" layoutY="42.0" text="post title" />
+      <Button layoutX="115.0" layoutY="105.0" mnemonicParsing="false" text="repost" />
+      <Button layoutX="211.0" layoutY="105.0" mnemonicParsing="false" text="see more" />
+      <Button layoutX="331.0" layoutY="98.0" mnemonicParsing="false" text="like" />
+      <Line endX="277.0" endY="-9.399993896484375" layoutX="230.0" layoutY="155.0" startX="-229.99996948242188" startY="-9.399993896484375" />
+   </children>
+</AnchorPane>

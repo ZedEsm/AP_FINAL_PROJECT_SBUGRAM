@@ -3,12 +3,24 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserlistController">
+<AnchorPane id="AnchorPane" maxHeight="600.0" maxWidth="435.0" prefHeight="600.0" prefWidth="396.0" style="-fx-background-color: #002900;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserlistController">
    <children>
       <Label layoutX="124.0" layoutY="63.0" text="Users" />
-      <ComboBox fx:id="usersbox" layoutX="193.0" layoutY="59.0" prefWidth="150.0" />
-      <Button layoutX="408.0" layoutY="103.0" mnemonicParsing="false" onAction="#Display_Profile" text="Display Profile" />
+      <ComboBox fx:id="usersbox" layoutX="129.0" layoutY="84.0" prefHeight="38.0" prefWidth="150.0" />
+      <ImageView fitHeight="44.0" fitWidth="49.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#showmenu" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/menu.jpg" />
+         </image>
+      </ImageView>
+      <Button layoutX="150.0" layoutY="341.0" mnemonicParsing="false" onAction="#Display_Profile" prefHeight="44.0" prefWidth="107.0" text="Display Profile" textFill="#2cde09">
+         <font>
+            <Font name="Cooper Black" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

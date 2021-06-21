@@ -1,10 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Controller;
 
+import View.UPDATE_USER_INFOController;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -12,10 +10,16 @@ import java.net.Socket;
 import java.nio.file.Paths;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 
 public class Person_profileController{
@@ -85,10 +89,52 @@ public class Person_profileController{
    
 
     }
- public void update_info(ActionEvent a){
- }
- public void delete_account(ActionEvent a){
- }
+    public void update_info(ActionEvent a){
+        String current_user_name = un.getText();
+        if(current_user_name.equals(usn)){
+              try {
+//            new PageLoader().load("Menu");
+//           ((Node)(act.getSource())).getScene().getWindow().hide();
+               FXMLLoader loader;
+               loader = new FXMLLoader(getClass().getResource("/View/UPDATE_USER_INFO.fxml"));
+                Parent root=loader.load();
+                  UPDATE_USER_INFOController mt = loader.getController();
+                mt.init(usn);
+                 Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.setTitle(usn);
+                    stage.show();
+                   ((Node)(a.getSource())).getScene().getWindow().hide();
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+
+            
+        }
+        
+    }
+    public void delete_account(ActionEvent a){
+    }
+    public void showmenu(MouseEvent act){
+        try {
+//            new PageLoader().load("Menu");
+//           ((Node)(act.getSource())).getScene().getWindow().hide();
+               FXMLLoader loader;
+               loader = new FXMLLoader(getClass().getResource("/View/Menu.fxml"));
+                Parent root=loader.load();
+                MenuController mt = loader.getController();
+                mt.init(usn);
+                 Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.setTitle(usn);
+                    stage.show();
+                   ((Node)(act.getSource())).getScene().getWindow().hide();
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+    }
  
    
    

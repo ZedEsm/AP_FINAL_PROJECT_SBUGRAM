@@ -60,7 +60,7 @@ public void Close_form(MouseEvent msv){
 public void Publish_m(ActionEvent act){
       try {
            String pme= post_message.getText();
-            String pst=post_title.getText();
+            String pst=post_title.getText();//if not null
             Socket clientsocket =new Socket("localhost",2020);
             out = new ObjectOutputStream(clientsocket.getOutputStream());
             in=new ObjectInputStream(clientsocket.getInputStream());

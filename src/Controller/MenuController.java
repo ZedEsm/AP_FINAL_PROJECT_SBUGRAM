@@ -26,6 +26,7 @@ public MenuController(){
        
         try {
             new PageLoader().load("FXMLDocument");
+            ((Node)(act.getSource())).getScene().getWindow().hide();
         } catch (IOException ex) {
             System.out.println(ex);
         }
@@ -79,7 +80,7 @@ public MenuController(){
                     stage.setTitle(usn);
                     stage.show();
                   // ((Node)(a.getSource())).getScene().getWindow().hide();
-                   //((Node)(a.getSource())).getScene().getWindow().hide();
+                   ((Node)(a.getSource())).getScene().getWindow().hide();
 
         } catch (Exception ex) {
             System.out.println(ex);

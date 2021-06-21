@@ -1,14 +1,26 @@
 package Model;
 
+import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
-public class Post {
+public class Post implements Serializable{
+
+   
 
     private String writer;
     private String title;
     private String description;
     private PrivacyStatus status;
+    private Date post_delivered_time;
+    public Date getPost_delivered_time() {
+        return post_delivered_time;
+    }
 
+  
+    public void setPost_delivered_time(Date post_delivered_time) {
+        this.post_delivered_time = post_delivered_time;
+    }
     public String getTitle() {
         return title;
     }
@@ -57,6 +69,6 @@ public class Post {
 
     @Override
     public String toString() {
-        return title;
+        return writer+","+title;
     }
 }
