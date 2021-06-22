@@ -237,12 +237,17 @@ public class ConnectionHandler {
                        pos.setDescription(pme);
                        pos.setWriter(usnn);
                        pos.setStatus(PrivacyStatus.PUBLIC);
+                       pos.setNumber_of_like(0);
+                       pos.setNumber_of_repost(0);
                        FileOutputStream fop = new FileOutputStream("post.dat",true);
                         
-                         fop.write((pos.getWriter()+","+pos.getTitle()+","+pos.getDescription()+","+pos.getStatus()+","+(new Date()).toString()+"\n").getBytes());
+                         fop.write((pos.getWriter()+","+pos.getTitle()+","+pos.getDescription()+","+pos.getStatus()+","+(new Date()).toString()+","+pos.getNumber_of_like()+","+pos.getNumber_of_repost()+"\n").getBytes());
                          fop.close();
+                             FileOutputStream fop1 = new FileOutputStream(pos.getWriter()+"_"+pos.getTitle()+"_commments.dat");
+                             fop1.close();
                           outputStream.writeObject(new String("post is delivered successfuly"));
-                                        outputStream.flush();
+                          outputStream.flush();
+                          
                          
                               
                            
@@ -297,11 +302,17 @@ public class ConnectionHandler {
                                           String current_post = post_line[i];
                                           String[] current_post_details = current_post.split(",");
                                           if(current_post_details[0].equals(main_usn)){
+                                              //pa kon
+                                            
+                                                 
+                                              
                                               Post pos = new Post();
                                               pos.setWriter(current_post_details[0]);
                                               pos.setTitle(current_post_details[1]);
                                               pos.setPost_delivered_time(new Date(current_post_details[4]));
                                               pos.setDescription(current_post_details[2]);
+                                              pos.setNumber_of_like(0);
+                                              pos.setNumber_of_repost(0);
                                               if(current_post_details[3].equals(PrivacyStatus.PUBLIC.toString())){
                                                   pos.setStatus(PrivacyStatus.PUBLIC);
                                               }
@@ -310,15 +321,22 @@ public class ConnectionHandler {
                                                   
                                               }
                                               post_list.add(pos);
+                                         
                                           }
                                           
                                           else if(following_list.indexOf(current_post_details[0])>=0){
+                                              //pak
+                                              
+                                                 
+                                                  
                                               
                                                 Post following_post = new Post();
                                                 following_post.setWriter(current_post_details[0]);
                                                 following_post.setTitle(current_post_details[1]);
                                                 following_post.setPost_delivered_time(new Date(current_post_details[4]));
                                                 following_post.setDescription(current_post_details[2]);
+                                                following_post.setNumber_of_like(0);
+                                                following_post.setNumber_of_repost(0);
                                                 if(current_post_details[3].equals(PrivacyStatus.PUBLIC.toString())){
                                                     following_post.setStatus(PrivacyStatus.PUBLIC);
                                                 }
@@ -328,8 +346,9 @@ public class ConnectionHandler {
                                                 }
                                                 post_list.add(following_post);
               
-                                              //code folling post ezaf
+                                              //pak
                                           }
+                                          
                                         }
                                         System.out.println(post_list.toString());
                                         Object[] post_array=post_list.toArray();
@@ -347,8 +366,9 @@ public class ConnectionHandler {
                                                 
                                             }
                                         }
+                                          
                                         Post[] xL = new Post[post_array.length];
-                                     
+                                     System.out.println(xL);
                                         outputStream.writeInt(xL.length);
                                         outputStream.flush();
                                            for (int i = 0; i <xL.length; i++) {
@@ -361,8 +381,8 @@ public class ConnectionHandler {
                                         System.out.println("++++++");
                                         
                             
-                   }
-                      else if(cmd[0].equalsIgnoreCase("[update_user_inform]")){
+                    }
+                    else if(cmd[0].equalsIgnoreCase("[update_user_inform]")){
                           File registred_user = new File(file_name);
                             if(registred_user.exists()){
                                 FileInputStream fin;
@@ -378,36 +398,72 @@ public class ConnectionHandler {
                                  String after = file_content.substring(xa+1);
                                  file_content=before+after;
                                  file_content+=cmd[1]+","+cmd[2]+","+cmd[3]+","+cmd[4]+","+cmd[5]+","+cmd[6]+"\n";
-                                 FileOutputStream fot = new FileOutputStream(file_name, true);
+                                 FileOutputStream fot = new FileOutputStream(file_name);
                                   System.out.println(file_content);
                                 fot.write(file_content.getBytes());
                                 fot.close();
-                                  outputStream.writeBytes("change user info successfully done");
+                                  outputStream.writeObject("change user info successfully done");
                                   outputStream.flush();
                                   //agar yeki bod suucc
-
-
-                                
-//                               String[] j=   file_content.split("\n");
-//                                  for (int i = 0; i < j.length; i++) {
-//                                     String[] comma=  j[i].split(",");
-//                                     
-//                                      
-//                                }
-                                
-                                 
                                  
                               } catch (Exception ex) {
                                   System.out.println(ex+"00");
                               }
-                      }
-                      }
-                   
+                            }
+                    }
+                    else if(cmd[0].equalsIgnoreCase("increase_like")){
+                        String post_writer = cmd[1];
+                        String post_title = cmd[2];
+                        FileInputStream fip = new FileInputStream("post.dat");
+                        byte[] byt2 = new byte[fip.available()];
+                        fip.read(byt2);//post haro khondim
+                        String posts = new String(byt2);
+                        fip.close();
+                        int x= posts.indexOf(post_writer+","+post_title);
+                        int y =posts.indexOf("\n",x);
+                        String befor =posts.substring(0, x);
+                        String after = posts.substring(y+1);
+                        String current_post=posts.substring(x,y);
+                        String[] current_post_items = current_post.split(",");
+                        int Like = Integer.parseInt(current_post_items[5]);
+                        Like++;
+                        current_post_items[5]=Like+"";
+                        String line="";
+                        for (int i = 0; i < current_post_items.length; i++) {
+                             if(i<current_post_items.length-1){
+                                line+=current_post_items[i]+",";
+                             }
+                             else{
+                                  line+=current_post_items[i]+"\n";
+                             }
+                            
+                        }
+                        String edited_file = befor+line+after;
+                        FileOutputStream finn = new FileOutputStream("post.dat");
+                           
+                         finn.write(edited_file.getBytes());
+                         finn.close();             
+                         outputStream.writeInt(Like);
+                         outputStream.flush();
+                    }   else if(cmd[0].equalsIgnoreCase("[add_comments]")){
+                        String user_name=cmd[1];
+                        String writer_name=cmd[2];
+                        String title=cmd[3];
+                        String comments=cmd[4];
+                         FileOutputStream finn = new FileOutputStream(writer_name+"_"+title+"_comments.dat",true);
+                         String file_content = user_name+","+comments+"\n";
+                         
+                           
+                         finn.write(file_content.getBytes());
+                         finn.close();             
+                         outputStream.writeObject("your comment saved successfully");
+                         outputStream.flush();
+
                         
-             
+                    }
+                 
                 }
-                ///age like 
-               // System.out.println(inputStream.readObject());
+      
                 
             } catch (IOException ex) {
                 System.out.println(ex+"conioex");
