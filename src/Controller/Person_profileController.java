@@ -65,8 +65,11 @@ public class Person_profileController{
                          un.setText(usn);
                          bd.setText(parameters[2]);
                          String pnme=parameters[3];
+                         if(pnme.indexOf("///")>0){
                          pnme=pnme.split("///")[1];
+                         
                          pnme=pnme.replaceAll("%20"," ");
+                         }
                        //  imagec_prof.setFill(new ImagePattern(new Image(pnme)));
                        img.setImage(new Image(Paths.get(pnme).toUri().toString()));
                         String follower = parameters[4];

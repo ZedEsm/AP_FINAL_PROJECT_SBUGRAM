@@ -6,6 +6,7 @@
 package View;
 
 import Controller.TimelineController;
+import Model.PageLoader;
 import java.util.Date;
 import java.io.File;
 import java.io.IOException;
@@ -61,11 +62,11 @@ public class UPDATE_USER_INFOController {
            if(name.getText().trim().length()>0){
                
                 if(lname.getText().length()>0){                   
-                    if(brd.getValue()!=null){
-                        try{
-                          if(brd.getValue().toString().length()>0){
+                   // if(brd.getValue()!=null){
+                       // try{
+                          
                                                           
-                        if(usn.getText().trim().length()>0){
+                          if(usn.getText().trim().length()>0){
                             
                            if(psw.getText().length()>=8){
                                
@@ -84,24 +85,41 @@ public class UPDATE_USER_INFOController {
                                       out.flush(); 
                                       Object os =in.readObject();
                                       String from_Server = os.toString();
-                                      if(from_Server.startsWith("registred")){
-                                                 FXMLLoader loader;
-           
-        
-                                        //  new PageLoader().load("timeline");
-                                      }
-                                      else{
-                                            Alert alert = new Alert(Alert.AlertType.ERROR,from_Server);
-                                            alert.setTitle("User available");
+                                        if(from_Server.equals("change user info successfully done")){
+                                              //boro person profile controller
+                                        }
+                                        else{
+                                             Alert alert = new Alert(Alert.AlertType.ERROR,from_Server);
+                                            alert.setTitle("User not found");
                                             alert.showAndWait();
-                                      }
+                                        }
+//                                      if(from_Server.startsWith("registred")){
+//                                                 FXMLLoader loader;
+//           
+//        
+//                                        //  new PageLoader().load("timeline");
+//                                      }
+//                                      else{
+//                                            Alert alert = new Alert(Alert.AlertType.ERROR,from_Server);
+//                                            alert.setTitle("User available");
+//                                            alert.showAndWait();
+//                                      }
+                                 
                                       
                                                                           
                                   
-                                    }catch (Exception ex) {
-                                      System.out.println(ex);
-                                    }
+//                                    }catch (Exception ex) {
+//                                      System.out.println(ex+"&&&&&");
+//                                    }
+                   
                                 }
+                                        catch(Exception ex){
+                                            System.out.println("99"+ex);
+                                            Alert alert = new Alert(Alert.AlertType.ERROR,ex.getMessage());
+                                            alert.setTitle("ERROR");
+                                            alert.showAndWait();         
+                                        }
+                               }
                                 else{
                                     Alert alert = new Alert(Alert.AlertType.ERROR,"Use 8 characters or more for your password");
                                     alert.setTitle("Choose better password!");
@@ -119,25 +137,13 @@ public class UPDATE_USER_INFOController {
                             alert.setTitle("UserName not entered");
                             alert.showAndWait();
                         }  
-                        }
-                        
-                           
-                
-                         }
-                        catch(Exception ex){
-                          System.out.println("99");
-                          Alert alert = new Alert(Alert.AlertType.ERROR,"Enter your birthday");
-                          alert.setTitle("BirthDay not entered");
-                          alert.showAndWait();         
-                        }
-                    }
                      
-                    else{
-                        System.out.println("98a9a9");
-                        Alert alert = new Alert(Alert.AlertType.ERROR,"Enter your birthday");
-                        alert.setTitle("BirthDay not entered");
-                        alert.showAndWait();         
-                    }
+//                    else{
+//                        System.out.println("98a9a9");
+//                        Alert alert = new Alert(Alert.AlertType.ERROR,"Enter your birthday");
+//                        alert.setTitle("BirthDay not entered");
+//                        alert.showAndWait();         
+//                    }
                 }
                 else{
                     Alert alert = new Alert(Alert.AlertType.ERROR,"Enter a lastname");
@@ -182,8 +188,10 @@ public class UPDATE_USER_INFOController {
                         brd.setValue(LocalDate.of(Integer.parseInt(zaman[0]),Integer.parseInt(zaman[1]),Integer.parseInt(zaman[2])));
                        
                          String pnme=parameters[3];
+                         if(pnme.indexOf("///")>0){
                          pnme=pnme.split("///")[1];
                          pnme=pnme.replaceAll("%20"," ");
+                         }
                          picname=pnme;
                        img.setImage(new Image(Paths.get(pnme).toUri().toString()));
                        psw.setText(parameters[6]);

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="376.0" prefWidth="507.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TimelineController">
+<AnchorPane id="AnchorPane" maxHeight="600.0" maxWidth="496.0" prefHeight="600.0" prefWidth="396.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TimelineController">
          <children>
             <Button layoutX="220.0" layoutY="58.0" mnemonicParsing="false" onAction="#refresh" text="Refresh" textFill="#f00566">
                <font>
@@ -18,7 +18,7 @@
                   <Image url="@../Images/menu.jpg" />
                </image>
             </ImageView>
-      <ListView layoutY="104.0" prefHeight="277.0" prefWidth="507.0" />
+      <ListView fx:id="post_list" layoutY="92.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="508.0" prefWidth="507.0" />
             
          </children>
 </AnchorPane>

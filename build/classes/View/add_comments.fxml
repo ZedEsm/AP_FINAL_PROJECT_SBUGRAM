@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="Controller.Add_commentsController">
+   <children>
+      <TextArea fx:id="comments" layoutX="185.0" layoutY="48.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button layoutX="259.0" layoutY="268.0" mnemonicParsing="false" onAction="#add_comment" text="add" />
+   </children>
+</AnchorPane>

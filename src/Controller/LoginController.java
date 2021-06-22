@@ -76,8 +76,11 @@ public class LoginController{
                     stage.setScene(scene);
                     stage.setTitle(username);
                     String pnme=from_Server.split(",")[1];
-                    pnme=pnme.split("///")[1];
-                    pnme=pnme.replaceAll("%20"," ");
+                    System.out.println(pnme);
+                    if(pnme.indexOf("///")>0){
+                        pnme=pnme.split("///")[1];
+                        pnme=pnme.replaceAll("%20"," ");
+                    }
                   
                     stage.getIcons().add(new Image(Paths.get(pnme).toUri().toString()));
                     stage.show();

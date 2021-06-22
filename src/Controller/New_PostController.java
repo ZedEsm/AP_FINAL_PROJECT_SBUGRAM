@@ -61,29 +61,57 @@ public void Publish_m(ActionEvent act){
       try {
            String pme= post_message.getText();
             String pst=post_title.getText();//if not null
-            Socket clientsocket =new Socket("localhost",2020);
-            out = new ObjectOutputStream(clientsocket.getOutputStream());
-            in=new ObjectInputStream(clientsocket.getInputStream());
-            
-            
-            String str ="[New_Post],"+pst+","+pme+","+usn;
-            
-            out.writeObject(str); 
-            out.flush();
-            Object os =in.readObject();
-            String from_Server = os.toString();
-            if(from_Server.endsWith("successfuly")){
-                  Alert alert = new Alert(Alert.AlertType.INFORMATION,from_Server);
-                  alert.setTitle("New Post Added");
-                  alert.showAndWait();
-                  post_message.setText("");
-                  post_title.setText("");
-                  
-            
+          //  if(!((pst.equals("")) && (pme.equals("")))){
+          if(!((pst.equals("")))){
+              if(!((pme.equals("")))){
+                Socket clientsocket =new Socket("localhost",2020);
+                out = new ObjectOutputStream(clientsocket.getOutputStream());
+                in=new ObjectInputStream(clientsocket.getInputStream());
+
+
+                String str ="[New_Post],"+pst+","+pme+","+usn;
+
+                out.writeObject(str); 
+                out.flush();
+                Object os =in.readObject();
+                String from_Server = os.toString();
+                if(from_Server.endsWith("successfuly")){
+                      Alert alert = new Alert(Alert.AlertType.INFORMATION,from_Server);
+                      alert.setTitle("New Post Added");
+                      alert.showAndWait();
+                      post_message.setText("");
+                      post_title.setText("");
+
+
+                }
+                else{
+                   Alert alert = new Alert(Alert.AlertType.ERROR,from_Server);
+                      alert.setTitle("Failed to add new post");
+                      alert.showAndWait();
+                      post_message.setText("");
+                      post_title.setText(""); 
+                }
             }
-        } catch (Exception ex) {
+            else{
+                 Alert alert = new Alert(Alert.AlertType.ERROR);
+                      alert.setTitle("No message have been wroten");
+                      alert.showAndWait();
+                      post_message.setText("");
+                      post_title.setText(""); 
+            }
+          }
+           else{
+                 Alert alert = new Alert(Alert.AlertType.ERROR);
+                      alert.setTitle("No title have been wroten");
+                      alert.showAndWait();
+                      post_message.setText("");
+                      post_title.setText(""); 
+            }
+        }
+       catch (Exception ex) {
             System.out.println(ex);
-        } 
+        }
+      
 }
     
 }

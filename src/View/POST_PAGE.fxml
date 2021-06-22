@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.POST_PAGEController">
+   <children>
+      <Label fx:id="post_writer_name" layoutX="239.0" layoutY="76.0" text="post writer name" />
+      <Label fx:id="post_title" layoutX="260.0" layoutY="115.0" text="post title" />
+      <Label fx:id="post_description" layoutX="255.0" layoutY="167.0" text="post descrription" />
+      <Label layoutX="133.0" layoutY="254.0" text="like" />
+      <Label fx:id="like" layoutX="274.0" layoutY="263.0" text="0" />
+      <Label layoutX="362.0" layoutY="263.0" text="repost" />
+      <Label fx:id="repost" layoutX="458.0" layoutY="295.0" text="0" />
+      <Button layoutX="203.0" layoutY="304.0" mnemonicParsing="false" onAction="#view_comments" text="view" />
+      <Button layoutX="329.0" layoutY="300.0" mnemonicParsing="false" onAction="#add_comments" text="add c" />
+   </children>
+</AnchorPane>
