@@ -8,20 +8,23 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="600.0" maxWidth="435.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="396.0" style="-fx-background-color: #202020;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegistreController">
+<Pane maxHeight="600.0" maxWidth="435.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="396.0" style="-fx-background-color: #fdc407;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegistreController">
    <children>
-      <Button fx:id="addimg" layoutX="159.0" layoutY="194.0" mnemonicParsing="false" onAction="#choose_img" text="ADD IMAGE" />
+      <Button fx:id="addimg" layoutX="159.0" layoutY="194.0" mnemonicParsing="false" onAction="#choose_img" text="ADD IMAGE" textFill="#e71414">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
       <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" layoutX="110.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
       <TextField fx:id="name" layoutX="124.0" layoutY="254.0" promptText="Name" />
       <TextField fx:id="lname" layoutX="125.0" layoutY="294.0" promptText="Last Name" />
       <TextField fx:id="usn" layoutX="125.0" layoutY="378.0" promptText="Username" />
       <TextField fx:id="psw" layoutX="125.0" layoutY="424.0" promptText="Password" />
-      <DatePicker fx:id="brd" layoutX="123.0" layoutY="336.0" prefHeight="25.0" prefWidth="166.0" promptText="Birth Date" />
-      <Button layoutX="170.0" layoutY="469.0" mnemonicParsing="false" onAction="#registre" text="Sign up" />
-      <Label layoutX="118.0" layoutY="516.0" prefHeight="17.0" prefWidth="185.0" text="Already have an account?" textFill="#44ef34">
+      <DatePicker fx:id="brd" layoutX="123.0" layoutY="336.0" prefHeight="25.0" prefWidth="155.0" promptText="Birth Date" />
+      <Button layoutX="170.0" layoutY="469.0" mnemonicParsing="false" onAction="#registre" text="Sign up" textFill="#e71414" />
+      <Label layoutX="118.0" layoutY="516.0" prefHeight="17.0" prefWidth="185.0" text="Already have an account?" textFill="#120773">
          <font>
             <Font name="Cooper Black" size="13.0" />
          </font></Label>
-      <Button layoutX="177.0" layoutY="548.0" mnemonicParsing="false" onAction="#Back_To_Login" text="Login" />
+      <Button layoutX="177.0" layoutY="548.0" mnemonicParsing="false" onAction="#Back_To_Login" text="Login" textFill="#e71414" />
    </children>
 </Pane>

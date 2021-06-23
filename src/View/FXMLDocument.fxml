@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="600.0" maxWidth="435.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="396.0" style="-fx-background-color: #002900;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
+<Pane maxHeight="600.0" maxWidth="435.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="396.0" style="-fx-background-color: #fdc407;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
    <children>
-      <Button fx:id="Login_Button" layoutX="162.0" layoutY="335.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="79.0" text="LOGIN" textFill="#ff0a70">
+      <Button fx:id="Login_Button" layoutX="162.0" layoutY="335.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="79.0" text="LOGIN" textFill="#e71414">
          <font>
             <Font name="Arial Black" size="12.0" />
          </font></Button>
@@ -27,24 +27,24 @@
             <Image url="@87390.png" />
          </image></ImageView>
       <TextField fx:id="password_visible" layoutX="116.0" layoutY="256.0" prefHeight="25.0" prefWidth="172.0" visible="false" />
-      <Button layoutX="168.0" layoutY="538.0" mnemonicParsing="false" onAction="#sign_up" text="SIGN UP" textFill="#ff0a70">
+      <Button layoutX="168.0" layoutY="538.0" mnemonicParsing="false" onAction="#sign_up" text="SIGN UP" textFill="#e71414">
          <font>
             <Font name="Arial Black" size="13.0" />
          </font></Button>
-      <Label layoutX="128.0" layoutY="484.0" prefHeight="35.0" prefWidth="164.0" text="Don't have an account?" textFill="#44ff2f">
+      <Label layoutX="124.0" layoutY="484.0" prefHeight="35.0" prefWidth="182.0" text="Don't have an account?" textFill="#120773">
          <font>
-            <Font name="Cooper Black" size="14.0" />
+            <Font name="Arial Black" size="13.0" />
          </font></Label>
-      <Label layoutX="142.0" layoutY="389.0" prefHeight="17.0" prefWidth="133.0" text="Forgot Password?" textFill="#6af732">
+      <Label layoutX="135.0" layoutY="389.0" prefHeight="22.0" prefWidth="143.0" text="Forgot Password?" textFill="#120773">
          <font>
-            <Font name="Cooper Black" size="14.0" />
+            <Font name="Arial Black" size="14.0" />
          </font>
       </Label>
-      <CheckBox layoutX="296.0" layoutY="260.0" mnemonicParsing="false" onAction="#show_pass" text="show" textFill="#ff0a70">
+      <CheckBox layoutX="296.0" layoutY="260.0" mnemonicParsing="false" onAction="#show_pass" text="show" textFill="#120773">
          <font>
             <Font name="Alberta Regular" size="12.0" />
          </font></CheckBox>
-      <Button layoutX="132.0" layoutY="435.0" mnemonicParsing="false" text="RETRIEVE PASSWORD" textFill="#ff0a70">
+      <Button layoutX="132.0" layoutY="435.0" mnemonicParsing="false" text="Retrieve Password" textFill="#e71414">
          <font>
             <Font name="Arial Black" size="12.0" />
          </font></Button>

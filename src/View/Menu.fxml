@@ -7,32 +7,38 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="600.0" maxWidth="496.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="396.0" style="-fx-background-color: #002900;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuController">
+<AnchorPane maxHeight="600.0" maxWidth="496.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="396.0" style="-fx-background-color: #fdc407;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuController">
    <children>
 
-      <Button layoutX="155.0" layoutY="472.0" mnemonicParsing="false" onAction="#LOGoOUT" text="Log ouT">
+      <Button layoutX="157.0" layoutY="468.0" mnemonicParsing="false" onAction="#LOGoOUT" prefHeight="32.0" prefWidth="82.0" text="Log ouT" textFill="#120773">
          <font>
-            <Font name="Cooper Black" size="16.0" />
+            <Font name="Arial Black" size="14.0" />
          </font></Button>
-      <Button layoutX="158.0" layoutY="376.0" mnemonicParsing="false" onAction="#new_post" text="New Post">
+      <Button layoutX="157.0" layoutY="377.0" mnemonicParsing="false" onAction="#new_post" prefHeight="28.0" prefWidth="82.0" text="New Post" textFill="#120773">
          <font>
             <Font name="Cooper Black" size="13.0" />
          </font></Button>
-      <Button layoutX="164.0" layoutY="223.0" mnemonicParsing="false" onAction="#prof" text="Profile">
+      <Button layoutX="153.0" layoutY="223.0" mnemonicParsing="false" onAction="#prof" prefHeight="32.0" prefWidth="82.0" text="Profile" textFill="#120773">
          <font>
-            <Font name="Cooper Black" size="14.0" />
+            <Font name="Arial Black" size="14.0" />
          </font></Button>
-      <Button layoutX="145.0" layoutY="289.0" mnemonicParsing="false" onAction="#LOGoOUT" text="Direct Message">
+      <Button layoutX="125.0" layoutY="300.0" mnemonicParsing="false" onAction="#LOGoOUT" prefHeight="28.0" prefWidth="145.0" text="Direct Message" textFill="#e71414">
          <font>
-            <Font name="Cooper Black" size="12.0" />
+            <Font name="Arial Black" size="13.0" />
          </font></Button>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="111.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@87390.png" />
          </image>
       </ImageView>
-      <Label layoutX="137.0" layoutY="544.0" text="Developer Information" textFill="#27d415" />
-      <Button layoutX="160.0" layoutY="424.0" mnemonicParsing="false" onAction="#UserList" prefHeight="26.0" prefWidth="69.0" text="UserList" />
+      <Label layoutX="123.0" layoutY="544.0" prefHeight="20.0" prefWidth="172.0" text="Developer Information" textFill="#120773">
+         <font>
+            <Font name="Arial Black" size="13.0" />
+         </font></Label>
+      <Button layoutX="155.0" layoutY="423.0" mnemonicParsing="false" onAction="#UserList" prefHeight="28.0" prefWidth="82.0" text="UserList" textFill="#e71414">
+         <font>
+            <Font name="Arial Black" size="11.0" />
+         </font></Button>
 
        </children>
 </AnchorPane>
