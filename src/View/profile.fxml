@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -21,29 +22,26 @@
          <font>
             <Font name="Segoe UI Black" size="13.0" />
          </font></Label>
-      <ImageView fx:id="img" fitHeight="128.0" fitWidth="138.0" layoutX="48.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="57.0" layoutY="276.0" mnemonicParsing="false" onAction="#Follow_action" prefHeight="26.0" prefWidth="62.0" text="Follow" />
-      <Button layoutX="158.0" layoutY="276.0" mnemonicParsing="false" onAction="#block_action" prefHeight="26.0" prefWidth="62.0" text="Block" textFill="#360000" />
-      <Button layoutX="245.0" layoutY="276.0" mnemonicParsing="false" onAction="#mute_action" prefHeight="26.0" prefWidth="78.0" text="Mute" textFill="#ff0a70" />
-      <Button layoutX="65.0" layoutY="335.0" mnemonicParsing="false" onAction="#repost_action" text="Repost" />
-      <Button layoutX="166.0" layoutY="335.0" mnemonicParsing="false" onAction="#seemore_action" text="see more" />
-      <Button layoutX="258.0" layoutY="335.0" mnemonicParsing="false" onAction="#like_action" prefHeight="26.0" prefWidth="53.0" text="like" />
-      <Label fx:id="followers_conter" layoutX="140.0" layoutY="215.0" text="-1" textFill="#ec1212">
+      <ImageView fx:id="img" fitHeight="123.0" fitWidth="125.0" layoutX="61.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="55.0" layoutY="235.0" mnemonicParsing="false" onAction="#Follow_action" prefHeight="26.0" prefWidth="62.0" text="Follow" />
+      <Button layoutX="167.0" layoutY="235.0" mnemonicParsing="false" onAction="#block_action" prefHeight="26.0" prefWidth="62.0" text="Block" textFill="#360000" />
+      <Button layoutX="246.0" layoutY="235.0" mnemonicParsing="false" onAction="#mute_action" prefHeight="26.0" prefWidth="78.0" text="Mute" textFill="#ff0a70" />
+      <Label fx:id="followers_conter" layoutX="148.0" layoutY="193.0" text="-1" textFill="#ec1212">
          <font>
             <Font name="Cooper Black" size="19.0" />
          </font>
       </Label>
-      <Label fx:id="following_counter" layoutX="332.0" layoutY="217.0" text="-1" textFill="#cf0f0f">
+      <Label fx:id="following_counter" layoutX="340.0" layoutY="195.0" text="-1" textFill="#cf0f0f">
          <font>
             <Font name="Cooper Black" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="51.0" layoutY="217.0" text="followers" textFill="#04ef28">
+      <Label layoutX="50.0" layoutY="195.0" text="followers" textFill="#04ef28">
          <font>
             <Font name="Cooper Black" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="236.0" layoutY="217.0" text="followings" textFill="#00ff10">
+      <Label layoutX="236.0" layoutY="195.0" text="followings" textFill="#00ff10">
          <font>
             <Font name="Cooper Black" size="15.0" />
          </font>
@@ -53,5 +51,6 @@
             <Image url="@../Images/menu.jpg" />
          </image>
       </ImageView>
+      <ListView fx:id="post_list" layoutY="267.0" prefHeight="333.0" prefWidth="400.0" />
    </children>
 </AnchorPane>

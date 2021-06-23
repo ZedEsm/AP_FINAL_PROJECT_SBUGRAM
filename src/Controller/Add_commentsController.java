@@ -57,6 +57,11 @@ public class Add_commentsController {
                                 alert.setTitle("commented!");
                                 alert.showAndWait();
                                       }//else bezar error
+                                      else{
+                                           Alert alert = new Alert(Alert.AlertType.ERROR,"comment is empty");
+                                alert.setTitle("comment failed!");
+                                alert.showAndWait();
+                                      }
                                       
      } catch (Exception ex) {
          System.out.println(ex);

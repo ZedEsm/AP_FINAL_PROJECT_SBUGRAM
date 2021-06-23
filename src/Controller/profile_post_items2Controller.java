@@ -7,18 +7,15 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-public class PostItemController {
+
+public class profile_post_items2Controller {
       public Label pswn;
       public Label pst;
       public AnchorPane root;
@@ -26,8 +23,8 @@ public class PostItemController {
       ObjectOutputStream out;
       ObjectInputStream in ;
       String usn;
-   public PostItemController(Post post) throws IOException {
-       new PageLoader().load("postItem",this);
+   public profile_post_items2Controller(Post post) throws IOException {
+       new PageLoader().load("profile_post_items2",this);
        this.post=post;
    }
 
@@ -38,7 +35,6 @@ public class PostItemController {
         return root;
     
     }
-
     public void see_more(ActionEvent a){
          try {
 
@@ -46,12 +42,11 @@ public class PostItemController {
                loader = new FXMLLoader(getClass().getResource("/View/POST_PAGE.fxml"));
                 Parent root=loader.load();
                   POST_PAGEController mt = loader.getController();
-                mt.init(post,usn,post.getNumber_of_like(),post.getNumber_of_repost());
+                mt.init1(post,usn);
                  Scene scene = new Scene(root);
                     Stage stage = new Stage();
                     stage.setScene(scene);
                     stage.setTitle(post.getTitle());
-                    
                     stage.show();
                   // ((Node)(a.getSource())).getScene().getWindow().hide();
         } catch (IOException ex) {
@@ -76,7 +71,7 @@ public class PostItemController {
                 Parent root=loader.load();
                   POST_PAGEController mt = loader.getController();
                 mt.init(post,usn,LiKe,Repost);
-             //   mt.init1(LiKe,Repost);
+           //     mt.init1(LiKe,Repost);
                  Scene scene = new Scene(root);
                     Stage stage = new Stage();
                     stage.setScene(scene);
@@ -91,7 +86,7 @@ public class PostItemController {
         }
     }
       public void repost(ActionEvent a){
-          String command = "repost,"+post.getWriter()+","+post.getTitle()+","+usn;
+          String command = "repost,"+post.getWriter()+","+post.getTitle();
         Socket clientsocket;
         try {
              clientsocket = new Socket("localhost",2020);
@@ -122,4 +117,5 @@ public class PostItemController {
         }
       }
 
+    
 }

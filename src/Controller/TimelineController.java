@@ -30,7 +30,7 @@ import javafx.stage.Stage;
 public class TimelineController {
 
     
-    ArrayList<Post> posts = new ArrayList<>();
+    ArrayList<Post> posts = new ArrayList<Post>();
     Post currentPost = new Post();
     ObjectOutputStream out;
     ObjectInputStream in ;

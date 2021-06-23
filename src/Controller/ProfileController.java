@@ -1,11 +1,14 @@
 
 package Controller;
 
+import Model.Post;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -29,7 +33,8 @@ public class ProfileController{
     ObjectInputStream in ;
     public String usn;
     public String mainusername;
-    
+    ArrayList<Post> posts = new ArrayList<>();
+    public ListView<Post> post_list;
     public void init(String s,String musn){
         usn=s;
         mainusername=musn;
@@ -94,10 +99,10 @@ public class ProfileController{
      public void block_action(ActionEvent a){
      }
       public void mute_action(ActionEvent a){}
-       public void repost_action(ActionEvent a){}
-        public void seemore_action(ActionEvent a){}
-        public void like_action(ActionEvent a){}
-    
+//       public void repost_action(ActionEvent a){}
+//        public void seemore_action(ActionEvent a){}
+//        public void like_action(ActionEvent a){}
+//    
     public void iner() {
                 Socket clientsocket;
         try {
@@ -122,10 +127,36 @@ public class ProfileController{
                 String following = parameters[5];
                 followers_conter.setText(follower);
                 following_counter.setText(following);
-                System.out.println(pnme);          
+                System.out.println(pnme); 
+                iner2();
+                
                
         } catch (Exception ex) {
             System.out.println(ex+"prfex");
+        }
+    }
+    public void iner2(){
+          Socket clientsocket;
+        try {
+             clientsocket = new Socket("localhost",2020);
+             out = new ObjectOutputStream(clientsocket.getOutputStream());
+             in = new ObjectInputStream(clientsocket.getInputStream());
+                 out.writeObject("select_following_list,"+usn);
+                 out.flush();
+                  int Length = in.readInt();
+              
+                  for (int i = 0; i <Length; i++) {
+                      
+                       Post post= (Post)in.readObject();
+                       posts.add(post);
+                        
+                  }
+                   post_list.setItems(FXCollections.observableArrayList(posts));
+                       post_list.setCellFactory(post_list -> new profile_post_items2(usn));
+                
+                
+        }catch(Exception ex){
+            System.out.println(ex);
         }
     }
    

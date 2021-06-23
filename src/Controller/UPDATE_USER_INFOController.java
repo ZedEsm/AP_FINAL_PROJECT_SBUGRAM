@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package View;
+
+package Controller;
 
 import Controller.TimelineController;
 import Model.PageLoader;
@@ -86,6 +82,23 @@ public class UPDATE_USER_INFOController {
                                       Object os =in.readObject();
                                       String from_Server = os.toString();
                                         if(from_Server.equals("change user info successfully done")){
+                                            try {
+                                    //            new PageLoader().load("Menu");
+                                    //           ((Node)(act.getSource())).getScene().getWindow().hide();
+                                                   FXMLLoader loader;
+                                                   loader = new FXMLLoader(getClass().getResource("/View/person_profile.fxml"));
+                                                    Parent root=loader.load();
+                                                    Person_profileController mt = loader.getController();
+                                                    mt.init(username);
+                                                     Scene scene = new Scene(root);
+                                                        Stage stage = new Stage();
+                                                        stage.setScene(scene);
+                                                        stage.setTitle(username);
+                                                        stage.show();
+                                                     //  ((Node)(act.getSource())).getScene().getWindow().hide();
+                                            } catch (IOException ex) {
+                                                System.out.println(ex);
+                                            }
                                               //boro person profile controller
                                         }
                                         else{

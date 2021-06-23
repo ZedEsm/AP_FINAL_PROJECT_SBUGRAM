@@ -1,7 +1,6 @@
 
 package Controller;
 
-import View.UPDATE_USER_INFOController;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="View.PfcController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="Controller.PfcController">
    <children>
       <Label fx:id="nome_etprenom" layoutX="420.0" layoutY="82.0" text="Name and LastName" />
       <Label fx:id="usnnom" layoutX="420.0" layoutY="126.0" text="Username" />

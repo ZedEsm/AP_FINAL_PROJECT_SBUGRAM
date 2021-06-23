@@ -13,7 +13,7 @@ public class Post implements Serializable{
     private String description;
     private PrivacyStatus status;
     private Date post_delivered_time;
-     private int number_of_like;
+    private int number_of_like;
     private int number_of_repost;
     
    

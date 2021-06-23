@@ -27,27 +27,47 @@ public class POST_PAGEController  {
    public Label like;
     public Post p;
     public String usn;
-     public void init(Post p,String s){
+    int L;
+    int R;
+     public void init(Post p,String s,int L,int R){
         this.p=p;
         usn=s;
         post_writer_name.setText(p.getWriter()) ;
         post_title.setText(p.getTitle());
         post_description.setText(p.getDescription());
-        
- 
-    }
-     public void init1(int L){
-     
          like.setText(L+"");
          p.setNumber_of_like(L);
-    
-     }
-      public void init2(int R){
-        repost.setText(R+"");
-   
+          repost.setText(R+"");
        p.setNumber_of_repost(R);
+ 
+    }
+     public void init1(Post p,String s){
+          this.p=p;
+        usn=s;
+        post_writer_name.setText(p.getWriter()) ;
+        post_title.setText(p.getTitle());
+        post_description.setText(p.getDescription());
      }
-      public void view_comments(ActionEvent a){}
+      public void view_comments(ActionEvent a){
+           try {
+//            new PageLoader().load("Menu");
+//           ((Node)(act.getSource())).getScene().getWindow().hide();
+               FXMLLoader loader;
+               loader = new FXMLLoader(getClass().getResource("/View/view_comments.fxml"));
+                Parent root=loader.load();
+               View_commentsController mt = loader.getController();
+               mt.init(p);
+                 Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                //    stage.setTitle(post.getTitle());
+                    stage.show();
+                  // ((Node)(a.getSource())).getScene().getWindow().hide();
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+          
+      }
       public void add_comments(ActionEvent a){
             try {
 //            new PageLoader().load("Menu");
