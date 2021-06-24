@@ -92,32 +92,97 @@ public class ConnectionHandler {
                                 cu = cu+"\n";
                                 fot.write(cu.getBytes());
                                 fot.close();
-                              //  String of ="_follower.dat";
-                              //  File foo = new File(cu+of);
-//                                FileOutputStream fot1 = new FileOutputStream(foo, true);
+                          
                                FileOutputStream fot1 = new FileOutputStream(wa+"_follower.dat", true);
                                 System.out.println("serve");
                            
                                 fot1.close();
-//                                String gf ="_following.dat";
-//                                File mf = new File(cu+gf);
+                            
                                  FileOutputStream fot2 = new FileOutputStream(wa+"_following.dat", true);
-//                                   FileOutputStream fot2 = new FileOutputStream(mf, true);
+                         
                                 
                                 fot2.close();
                                 FileOutputStream user_posts = new FileOutputStream(wa+"_posts.dat",true);
                                 user_posts.close();
                                 System.out.println("se11rve");
+                                String question = cmd[7];
+                                String answer = cmd[8];
+                                String fiile_name = cmd[1]+"_question.dat";
+                                FileOutputStream user_question = new FileOutputStream(fiile_name);
+                                user_question.write((question+","+answer).getBytes());
+                                user_question.close();
                                 outputStream.writeObject(new String("registred,"+cmd[6]));
                                 outputStream.flush();
                                 System.out.println(cmd[1]+" register "+cmd[6]);
                                 System.out.println(new java.util.Date().toString());
+                                userexist=false;///****
                             }
                             else{
                                 userexist=false;
                             }
                         // save to file beshe
                     }
+                     else if(cmd[0].equalsIgnoreCase("check_usn")){
+                        FileInputStream fin = new FileInputStream(file_name);
+                        byte[] byt = new byte[fin.available()];
+                        fin.read(byt);
+                        String file_content = new String(byt);
+                        String[] asw = file_content.split("\n");
+                          for (int i = 0; i < asw.length; i++) {
+                                  String[] a= asw[i].split(",");
+                                  if(a[0].equals(cmd[1])){
+                                        userexist = true;
+                                        break;
+                                  }
+                          }
+                           if(userexist==false){
+                                      outputStream.writeObject(new String("usernme is incorrect\n"));
+                                      outputStream.flush();
+                                      userexist=false;
+                           }
+                           else{
+                               
+                                userexist=false;
+                                FileInputStream fiqn = new FileInputStream(cmd[1]+"_question.dat");
+                                byte[] bytqs = new byte[fiqn.available()];
+                                fiqn.read(bytqs);
+                                String file_contentqs = new String(bytqs);
+                                outputStream.writeObject(file_contentqs);
+                                outputStream.flush();
+                                
+                            }
+                          
+
+                     }
+                      else if(cmd[0].equalsIgnoreCase("get_password")){
+                          String usn=cmd[1];
+                          FileInputStream fin = new FileInputStream(file_name);
+                        byte[] byt = new byte[fin.available()];
+                        fin.read(byt);
+                        String file_content = new String(byt);
+                        String[] asw = file_content.split("\n");
+                        String oldpass="";
+                          for (int i = 0; i < asw.length; i++) {
+                                  String[] a= asw[i].split(",");
+                                  if(a[0].equals(cmd[1])){
+                                        userexist = true;
+                                        oldpass=a[3];
+                                        break;
+                                  }
+                          }
+                             if(userexist==false){
+                                      outputStream.writeObject(new String("usernme is incorrect\n"));
+                                      outputStream.flush();
+                                      userexist=false;
+                           }
+                           else{
+                               
+                                userexist=false;
+                                   outputStream.writeObject(oldpass);
+                                      outputStream.flush();
+                             }
+                          
+                      }
                     else if(cmd[0].equalsIgnoreCase("[Login_user]")){
                                FileInputStream fin = new FileInputStream(file_name);
                                 byte[] byt = new byte[fin.available()];
@@ -227,6 +292,22 @@ public class ConnectionHandler {
 
                         
                     }
+                    else if(cmd[0].equalsIgnoreCase("select_random_Q")){
+                         FileInputStream fin = new FileInputStream("questions.dat");
+                         byte[] byt = new byte[fin.available()];
+                         fin.read(byt);
+                         String file_content = new String(byt);
+                         fin.close();
+                         String[] asw = file_content.split("\n");
+                         int max = asw.length;
+                         int question_numb = (int)Math.floor(max*Math.random());
+                         String qu = asw[question_numb];
+                         outputStream.writeObject(qu);
+                         outputStream.flush();
+                         
+                        
+                    }
+                    
                     
                     else if(cmd[0].equalsIgnoreCase("[New_Post]")){
                         
@@ -282,7 +363,33 @@ public class ConnectionHandler {
                             
                                         }
                                         else{
-                                             outputStream.writeObject("you already have this user as follower");
+                                                FileInputStream fi5 = new FileInputStream(main_usn+"_following.dat");  
+                                                byte[] byt5 = new byte[fi5.available()];
+                                                fi5.read(byt5);
+                                                String followers5 = new String(byt5);//list follower
+                                                fi5.close();
+                                                int IDX = followers5.indexOf(follower_usn);
+                                                int Idx1 = followers5.indexOf("\n",IDX);
+                                                String before = followers5.substring(0,IDX);
+                                                String after = followers5.substring(Idx1+1);
+                                                 FileOutputStream finn1 = new FileOutputStream(main_usn+"_following.dat");
+                                                 finn1.write((before+after).getBytes());
+                                                 finn1.close();
+                                                 
+                                                  FileInputStream fi6 = new FileInputStream(follower_usn+"_follower.dat");  
+                                                byte[] byt6 = new byte[fi6.available()];
+                                                fi6.read(byt6);
+                                                String followers6 = new String(byt6);
+                                                fi6.close();
+                                                int IDX6 = followers6.indexOf(main_usn);
+                                                int Idx16 = followers6.indexOf("\n",IDX6);
+                                                String before6 = followers6.substring(0,IDX6);
+                                                String after6 = followers6.substring(Idx16+1);
+                                                 FileOutputStream finn16 = new FileOutputStream(follower_usn+"_follower.dat");
+                                                 finn16.write((before6+after6).getBytes());
+                                                 finn16.close();
+                                            
+                                             outputStream.writeObject("you unfollow "+follower_usn);
                                              outputStream.flush();
                                         }
                            
@@ -315,8 +422,8 @@ public class ConnectionHandler {
                                           pos.setTitle(current_post_details[1]);
                                           pos.setPost_delivered_time(new Date(current_post_details[4]));
                                           pos.setDescription(current_post_details[2]);
-                                          pos.setNumber_of_like(0);
-                                          pos.setNumber_of_repost(0);
+                                          pos.setNumber_of_like(Integer.parseInt(current_post_details[5]));
+                                          pos.setNumber_of_repost(Integer.parseInt(current_post_details[6]));
                                           if(current_post_details[3].equals(PrivacyStatus.PUBLIC.toString())){
                                                   pos.setStatus(PrivacyStatus.PUBLIC);
                                           }
@@ -353,8 +460,8 @@ public class ConnectionHandler {
                                           pos.setTitle(current_post_details[1]);
                                           pos.setPost_delivered_time(new Date(current_post_details[4]));
                                           pos.setDescription(current_post_details[2]);
-                                          pos.setNumber_of_like(0);
-                                          pos.setNumber_of_repost(0);
+                                            pos.setNumber_of_like(Integer.parseInt(current_post_details[5]));
+                                          pos.setNumber_of_repost(Integer.parseInt(current_post_details[6]));
                                           if(current_post_details[3].equals(PrivacyStatus.PUBLIC.toString())){
                                                   pos.setStatus(PrivacyStatus.PUBLIC);
                                           }
@@ -554,7 +661,84 @@ public class ConnectionHandler {
                         
                         
                     }
-                 
+                      else if(cmd[0].equalsIgnoreCase("delete_account")){
+                          String usn = cmd[1];
+                        
+                        File f = new File(usn+"_posts.dat");
+                        f.delete();
+                        f = new File(usn+"_following.dat");
+                        f.delete();
+                        f = new File(usn+"_follower.dat");
+                        f.delete();
+                          f = new File(usn+"_question.dat");
+                        f.delete();
+                        File g = new File("D:\\java\\ServerSBU");
+                        File[] glist= g.listFiles();
+                        for (int i = 0; i < glist.length; i++) {
+                             File file = glist[i];
+                             if(file.getName().startsWith(usn) && file.getName().endsWith("_comments.dat")){
+                                 file.delete();
+                             }
+                             System.out.println(file.getName());
+                        }
+                        FileInputStream fip = new FileInputStream("UERS_F.dat");
+                        byte[] byt2 = new byte[fip.available()];
+                        fip.read(byt2);
+                        String users= new String(byt2);
+                        fip.close();
+                        int IDX = users.indexOf(usn);
+                        int Idx1 = users.indexOf("\n",IDX);
+                        String before = users.substring(0,IDX);
+                        String after = users.substring(Idx1+1);
+                        FileOutputStream finn1 = new FileOutputStream("UERS_F.dat");
+                        finn1.write((before+after).getBytes());
+                        finn1.close();
+                        String Other_users=before+after;
+                        
+                        String[] asw = Other_users.split("\n");
+                    
+                        for (int i = 0; i < asw.length; i++) {
+                            
+                            String[] a= asw[i].split(",");
+                            String user=a[0];   
+                            FileInputStream ufg = new FileInputStream(user+"_following.dat");
+                            byte[] bytu = new byte[ufg.available()];
+                            ufg.read(bytu);
+                            String file_content_ufg= new String(bytu);
+                            ufg.close();
+                            if(file_content_ufg.contains(usn)){
+                                int idx1 = file_content_ufg.indexOf(usn);
+                                int idx2 = file_content_ufg.indexOf("\n",idx1);
+                                String beforeg = file_content_ufg.substring(0,idx1);
+                                String afterg = file_content_ufg.substring(idx2+1);
+                                FileOutputStream fing = new FileOutputStream(user+"_following.dat");
+                                fing.write((beforeg+afterg).getBytes());
+                                fing.close();
+                            }
+                            ufg = new FileInputStream(user+"_follower.dat");
+                            bytu = new byte[ufg.available()];
+                            ufg.read(bytu);
+                            file_content_ufg= new String(bytu);
+                            ufg.close();
+                            if(file_content_ufg.contains(usn)){
+                                int idx1 = file_content_ufg.indexOf(usn);
+                                int idx2 = file_content_ufg.indexOf("\n",idx1);
+                                String beforeg = file_content_ufg.substring(0,idx1);
+                                String afterg = file_content_ufg.substring(idx2+1);
+                                FileOutputStream fing = new FileOutputStream(user+"_follower.dat");
+                                fing.write((beforeg+afterg).getBytes());
+                                fing.close();
+                            }
+                        }
+                         outputStream.writeObject("your account deleted");
+                         outputStream.flush();
+                        
+                                
+                        
+                        
+                        
+                      }
+//                 
                 }
       
                 
