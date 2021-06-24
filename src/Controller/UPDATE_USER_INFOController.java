@@ -3,6 +3,7 @@ package Controller;
 
 import Controller.TimelineController;
 import Model.PageLoader;
+import Model.Post;
 import java.util.Date;
 import java.io.File;
 import java.io.IOException;
@@ -22,6 +23,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import java.time.LocalDate;
 import java.time.Month;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -52,6 +54,12 @@ public class UPDATE_USER_INFOController {
        iner();
         
     }
+//      public void init2(String s){
+//        username=s;
+//        System.out.println(username);
+//       iner2();
+//        
+//    }
    public void save(ActionEvent a){
         if(picname!=null){
              
@@ -90,6 +98,7 @@ public class UPDATE_USER_INFOController {
                                                     Parent root=loader.load();
                                                     Person_profileController mt = loader.getController();
                                                     mt.init(username);
+                                                    mt.init2(username);
                                                      Scene scene = new Scene(root);
                                                         Stage stage = new Stage();
                                                         stage.setScene(scene);
@@ -175,6 +184,7 @@ public class UPDATE_USER_INFOController {
             alert.setTitle("Image not found!");
             alert.showAndWait();
         }
+       // iner2();
       
   
    }
@@ -219,6 +229,33 @@ public class UPDATE_USER_INFOController {
    
 
     }
+//    public void iner2(){
+//          Socket clientsocket;
+//        try {
+//             clientsocket = new Socket("localhost",2020);
+//             out = new ObjectOutputStream(clientsocket.getOutputStream());
+//             in = new ObjectInputStream(clientsocket.getInputStream());
+//                 out.writeObject("select_following_list,"+usn);
+//                 out.flush();
+//                  int Length = in.readInt();
+//              
+//                   for (int i = 0; i <Length; i++) {
+//                      
+//                       Post post= (Post)in.readObject();
+//                       posts.add(post);
+//                        
+//                   }
+////                   post_list.setItems(FXCollections.observableArrayList(posts));
+////                       post_list.setCellFactory(post_list -> new profile_post_items2(usn));
+//                    post_list.setItems(FXCollections.observableArrayList(posts));
+//                    post_list.setCellFactory(post_list -> new PostItem(usn));
+//                
+//                
+//           }catch(Exception ex){
+//            System.out.println(ex);
+//        }
+//    }
+
 
   
      public void choose_img(ActionEvent actionEvent){

@@ -9,16 +9,16 @@
 
 <AnchorPane id="AnchorPane" maxHeight="600.0" maxWidth="496.0" prefHeight="600.0" prefWidth="396.0" style="-fx-background-color: #fdc407;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TimelineController">
          <children>
-            <Button layoutX="220.0" layoutY="58.0" mnemonicParsing="false" onAction="#refresh" text="Refresh" textFill="#120773">
+            <Button layoutX="168.0" layoutY="91.0" mnemonicParsing="false" onAction="#refresh" text="Refresh" textFill="#120773">
                <font>
                   <Font name="Arial Black" size="12.0" />
                </font></Button>
             <ImageView fitHeight="36.0" fitWidth="47.0" layoutX="10.0" layoutY="12.0" onMouseClicked="#showmenu" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Images/menu.jpg" />
+                  <Image url="@../Images/image.png" />
                </image>
             </ImageView>
-      <ListView fx:id="post_list" layoutY="92.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="508.0" prefWidth="507.0" style="-fx-background-color: #120773;" />
+      <ListView fx:id="post_list" layoutY="164.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="436.0" prefWidth="404.0" style="-fx-background-color: #120773;" />
             
          </children>
 </AnchorPane>

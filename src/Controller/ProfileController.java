@@ -42,6 +42,13 @@ public class ProfileController{
         iner();
         
     }
+        public void init2(String s,String musn){
+        usn=s;
+        mainusername=musn;
+        System.out.println(usn+"50"+musn);
+        iner2();
+        
+    }
     public void showmenu(MouseEvent me){
         try {
                FXMLLoader loader;
@@ -120,15 +127,17 @@ public class ProfileController{
                 usnnom.setText(usn);
                 brthd.setText(parameters[2]);
                 String pnme=parameters[3];
-                pnme=pnme.split("///")[1];
-                pnme=pnme.replaceAll("%20"," ");
+                if(pnme.indexOf("///")>0){
+                    pnme=pnme.split("///")[1];
+                    pnme=pnme.replaceAll("%20"," ");
+                }
                 img.setImage(new Image(Paths.get(pnme).toUri().toString()));
                 String follower = parameters[4];
                 String following = parameters[5];
                 followers_conter.setText(follower);
                 following_counter.setText(following);
                 System.out.println(pnme); 
-                iner2();
+               
                 
                
         } catch (Exception ex) {
@@ -151,8 +160,10 @@ public class ProfileController{
                        posts.add(post);
                         
                   }
-                   post_list.setItems(FXCollections.observableArrayList(posts));
-                       post_list.setCellFactory(post_list -> new profile_post_items2(usn));
+//                   post_list.setItems(FXCollections.observableArrayList(posts));
+//                       post_list.setCellFactory(post_list -> new profile_post_items2(usn));
+ post_list.setItems(FXCollections.observableArrayList(posts));
+                       post_list.setCellFactory(post_list -> new PostItem(usn));
                 
                 
         }catch(Exception ex){

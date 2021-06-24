@@ -8,32 +8,59 @@
 
 <AnchorPane id="AnchorPane" maxHeight="600.0" maxWidth="435.0" prefHeight="600.0" prefWidth="396.0" style="-fx-background-color: #fdc407;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.POST_PAGEController">
    <children>
-      <Label fx:id="post_writer_name" layoutX="149.0" layoutY="36.0" prefHeight="20.0" prefWidth="134.0" text="post writer name">
+      <Label fx:id="post_writer_name" layoutX="130.0" layoutY="83.0" prefHeight="20.0" prefWidth="134.0" text="post writer name" textFill="#120773">
          <font>
             <Font name="Arial Black" size="13.0" />
          </font></Label>
-      <Label fx:id="post_title" layoutX="182.0" layoutY="233.0" text="post title" />
-      <Label fx:id="post_description" layoutX="82.0" layoutY="271.0" prefHeight="42.0" prefWidth="265.0" text="Post Description Can Be Multiple Lines">
+      <Label fx:id="post_title" layoutX="45.0" layoutY="368.0" text="post title" textFill="#120773">
          <font>
             <Font name="Arial Black" size="12.0" />
          </font></Label>
-      <Label layoutX="69.0" layoutY="476.0" text="Likes" />
-      <Label fx:id="like" layoutX="117.0" layoutY="476.0" text="0" />
-      <Label layoutX="309.0" layoutY="476.0" text="reposts" />
-      <Label fx:id="repost" layoutX="386.0" layoutY="476.0" text="0" />
-      <Button layoutX="243.0" layoutY="427.0" mnemonicParsing="false" onAction="#view_comments" text="View Comments" />
-      <Button layoutX="117.0" layoutY="427.0" mnemonicParsing="false" onAction="#add_comments" text="Add Comment" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="95.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="303.0" layoutY="113.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="90.0" text="View Profile">
+      <Label fx:id="post_description" layoutX="45.0" layoutY="386.0" prefHeight="42.0" prefWidth="265.0" text="Post Description Can Be Multiple Lines" textFill="#120773">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Label>
+      <Label layoutX="28.0" layoutY="476.0" text="Likes" textFill="#120773">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Label>
+      <Label fx:id="like" layoutX="76.0" layoutY="476.0" text="0" textFill="#120773">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Label>
+      <Label layoutX="286.0" layoutY="476.0" text="reposts" textFill="#120773">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Label>
+      <Label fx:id="repost" layoutX="363.0" layoutY="476.0" text="0" textFill="#120773">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Label>
+      <Button layoutX="201.0" layoutY="440.0" mnemonicParsing="false" onAction="#view_comments" text="View Comments" textFill="#120773">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+      <Button layoutX="90.0" layoutY="440.0" mnemonicParsing="false" onAction="#add_comments" text="Add Comment" textFill="#120773">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+      <ImageView fitHeight="265.0" fitWidth="311.0" layoutX="42.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="280.0" layoutY="16.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="90.0" text="View Profile" textFill="#120773">
          <font>
             <Font name="Arial Black" size="11.0" />
          </font>
       </Button>
-      <Button layoutX="52.0" layoutY="427.0" mnemonicParsing="false" text="Repost" />
-      <Button layoutX="376.0" layoutY="427.0" mnemonicParsing="false" text="Like" />
-      <Button layoutX="14.0" layoutY="24.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="73.0" text="back to menu">
+      <Button layoutX="26.0" layoutY="440.0" mnemonicParsing="false" text="Repost" textFill="#120773">
          <font>
-            <Font size="11.0" />
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+      <Button layoutX="327.0" layoutY="440.0" mnemonicParsing="false" text="Like" textFill="#120773">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+      <Button layoutX="14.0" layoutY="24.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" text="back to menu" textFill="#120773">
+         <font>
+            <Font name="Arial Black" size="11.0" />
          </font>
       </Button>
    </children>

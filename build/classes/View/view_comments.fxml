@@ -5,6 +5,6 @@
 
 <AnchorPane id="AnchorPane" maxHeight="600.0" maxWidth="435.0" prefHeight="600.0" prefWidth="395.0" style="-fx-background-color: #fdc407;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.View_commentsController">
    <children>
-      <ListView fx:id="LIST_V" layoutX="98.0" layoutY="132.0" prefHeight="273.0" prefWidth="200.0" style="-fx-background-color: #e71414;" />
+      <ListView fx:id="LIST_V" layoutX="98.0" layoutY="132.0" prefHeight="273.0" prefWidth="200.0" style="-fx-background-color: #120773;" />
    </children>
 </AnchorPane>

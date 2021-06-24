@@ -76,7 +76,7 @@ public class PostItemController {
                 Parent root=loader.load();
                   POST_PAGEController mt = loader.getController();
                 mt.init(post,usn,LiKe,Repost);
-             //   mt.init1(LiKe,Repost);
+            //  mt.init1(LiKe,Repost);
                  Scene scene = new Scene(root);
                     Stage stage = new Stage();
                     stage.setScene(scene);
@@ -106,8 +106,8 @@ public class PostItemController {
                loader = new FXMLLoader(getClass().getResource("/View/POST_PAGE.fxml"));
                 Parent root=loader.load();
                 POST_PAGEController mt = loader.getController();
-                    mt.init(post,usn,LiKe,Repost);
-                 //  mt.init1(LiKe,Repost);
+                   mt.init(post,usn,LiKe,Repost);
+               //   mt.init1(LiKe,Repost);
                  Scene scene = new Scene(root);
                     Stage stage = new Stage();
                     stage.setScene(scene);

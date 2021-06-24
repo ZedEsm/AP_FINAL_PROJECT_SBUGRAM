@@ -41,6 +41,14 @@ public class POST_PAGEController  {
        p.setNumber_of_repost(R);
  
     }
+     
+        public void init1(int L,int R){
+         like.setText(L+"");
+         p.setNumber_of_like(L);
+          repost.setText(R+"");
+       p.setNumber_of_repost(R);
+ 
+    }
      public void init1(Post p,String s){
           this.p=p;
         usn=s;

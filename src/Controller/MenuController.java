@@ -74,6 +74,7 @@ public MenuController(){
                 Parent root=loader.load();
                 Person_profileController mt = loader.getController();
                 mt.init(usn);
+                 mt.init2(usn);
                  Scene scene = new Scene(root);
                     Stage stage = new Stage();
                     stage.setScene(scene);

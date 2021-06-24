@@ -60,7 +60,8 @@ public class UserlistController {
         loader = new FXMLLoader(getClass().getResource("/View/profile.fxml"));
                 Parent root=loader.load();
                    ProfileController tm = loader.getController();
-                    tm.init(users_o,usn);
+                   tm.init(users_o,usn);
+                    tm.init2(users_o,usn);
                     Scene scene = new Scene(root);
                     Stage stage = new Stage();
                     stage.setScene(scene);

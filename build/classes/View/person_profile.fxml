@@ -3,59 +3,55 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="600.0" maxWidth="435.0" prefHeight="600.0" prefWidth="396.0" style="-fx-background-color: #002900;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Person_profileController">
+<AnchorPane id="AnchorPane" maxHeight="600.0" maxWidth="435.0" prefHeight="600.0" prefWidth="396.0" style="-fx-background-color: #fdc407;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Person_profileController">
    <children>
-      <ListView layoutX="1.0" layoutY="285.0" prefHeight="317.0" prefWidth="395.0" style="-fx-background-color: #6af732;" />
-      <Label fx:id="nam" layoutX="267.0" layoutY="33.0" text="Name and Lastname" textFill="#6af732">
+      <Label fx:id="nam" layoutX="226.0" layoutY="62.0" text="Name and Lastname" textFill="#120773">
          <font>
-            <Font name="Albert Regular" size="12.0" />
+            <Font name="Arial Black" size="12.0" />
          </font></Label>
-      <Label fx:id="un" layoutX="294.0" layoutY="88.0" text="Username" textFill="#6af732">
+      <Label fx:id="un" layoutX="226.0" layoutY="93.0" text="Username" textFill="#120773">
          <font>
-            <Font name="Albert Regular" size="13.0" />
+            <Font name="Arial Black" size="12.0" />
          </font></Label>
-      <Label fx:id="bd" layoutX="294.0" layoutY="133.0" text="Birth date" textFill="#6af732">
+      <Label fx:id="bd" layoutX="227.0" layoutY="126.0" text="Birth date" textFill="#120773">
          <font>
-            <Font name="Albert Regular" size="13.0" />
+            <Font name="Arial Black" size="12.0" />
          </font></Label>
-      <Label layoutX="64.0" layoutY="204.0" prefHeight="14.0" prefWidth="71.0" text="Followers" textFill="#6af732">
+      <Label layoutX="64.0" layoutY="185.0" prefHeight="14.0" prefWidth="71.0" text="Followers" textFill="#120773">
          <font>
-            <Font name="Albert Regular" size="12.0" />
+            <Font name="Arial Black" size="12.0" />
          </font></Label>
-      <Label layoutX="256.0" layoutY="204.0" text="Following" textFill="#26ff17">
+      <Label layoutX="227.0" layoutY="185.0" text="Following" textFill="#120773">
          <font>
-            <Font name="Albert Regular" size="12.0" />
+            <Font name="Arial Black" size="12.0" />
          </font></Label>
-      <Label fx:id="follower_counter" layoutX="139.0" layoutY="204.0" prefHeight="15.0" prefWidth="15.0" text="-1" textFill="#6af732">
+      <Label fx:id="follower_counter" layoutX="139.0" layoutY="185.0" prefHeight="15.0" prefWidth="15.0" text="-1" textFill="#120773">
          <font>
-            <Font name="Albert Regular" size="13.0" />
+            <Font name="Arial Black" size="12.0" />
          </font></Label>
-      <Label fx:id="following_counter" layoutX="322.0" layoutY="204.0" text="-1" textFill="#6af732">
+      <Label fx:id="following_counter" layoutX="304.0" layoutY="185.0" text="-1" textFill="#120773">
          <font>
-            <Font name="Albert Regular" size="13.0" />
+            <Font name="Arial Black" size="12.0" />
          </font></Label>
-      <Button layoutX="55.0" layoutY="240.0" mnemonicParsing="false" onAction="#update_info" prefHeight="26.0" prefWidth="114.0" text="UPDATE INFO" />
-      <Button layoutX="249.0" layoutY="240.0" mnemonicParsing="false" onAction="#delete_account" text="DELETE ACCOUNT" />
-      <Label layoutX="176.0" layoutY="333.0" prefHeight="18.0" prefWidth="51.0" text="Post title" />
-      <Button layoutX="90.0" layoutY="380.0" mnemonicParsing="false" text="Repost" />
-      <Button layoutX="276.0" layoutY="380.0" mnemonicParsing="false" text="Like" />
-      <Button layoutX="172.0" layoutY="380.0" mnemonicParsing="false" text="SEE MORE" />
-      <Line endX="100.0" layoutX="294.0" layoutY="434.0" startX="-293.9999694824219" />
-      <Label layoutX="158.0" layoutY="457.0" prefHeight="18.0" prefWidth="102.0" text="Post Writer Name" />
-      <Label layoutX="183.0" layoutY="488.0" prefHeight="18.0" prefWidth="51.0" text="Post title" />
-      <ImageView fx:id="img" fitHeight="129.0" fitWidth="150.0" layoutX="79.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true" />
-      <TextField layoutX="124.0" layoutY="301.0" promptText="Post Writer Name" />
+      <Button layoutX="26.0" layoutY="239.0" mnemonicParsing="false" onAction="#update_info" prefHeight="26.0" prefWidth="114.0" text="UPDATE INFO" textFill="#120773">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+      <Button layoutX="238.0" layoutY="240.0" mnemonicParsing="false" onAction="#delete_account" text="DELETE ACCOUNT" textFill="#e71414">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+      <ImageView fx:id="img" fitHeight="129.0" fitWidth="150.0" layoutX="64.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="26.0" fitWidth="27.0" layoutX="13.0" layoutY="20.0" onMouseClicked="#showmenu" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Images/menu.jpg" />
+            <Image url="@../Images/image.png" />
          </image>
       </ImageView>
+      <ListView fx:id="post_list" layoutX="-3.0" layoutY="274.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="326.0" prefWidth="404.0" style="-fx-background-color: #fdc407;" />
    </children>
 </AnchorPane>

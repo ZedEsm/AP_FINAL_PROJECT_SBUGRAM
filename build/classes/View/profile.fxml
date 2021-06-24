@@ -8,49 +8,58 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="600.0" maxWidth="435.0" prefHeight="600.0" prefWidth="396.0" style="-fx-background-color: #002900;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProfileController">
+<AnchorPane id="AnchorPane" maxHeight="600.0" maxWidth="435.0" prefHeight="600.0" prefWidth="396.0" style="-fx-background-color: #fdc407;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProfileController">
    <children>
-      <Label fx:id="nome_etprenom" layoutX="210.0" layoutY="41.0" prefHeight="18.0" prefWidth="137.0" text="Name and LastName" textFill="#6af732">
+      <Label fx:id="nome_etprenom" layoutX="189.0" layoutY="66.0" prefHeight="18.0" prefWidth="137.0" text="Name and LastName" textFill="#120773">
          <font>
-            <Font name="Segoe UI Black" size="13.0" />
+            <Font name="Arial Black" size="12.0" />
          </font></Label>
-      <Label fx:id="usnnom" layoutX="245.0" layoutY="78.0" text="Username" textFill="#6af732">
+      <Label fx:id="usnnom" layoutX="190.0" layoutY="90.0" text="Username" textFill="#120773">
          <font>
-            <Font name="Segoe UI Black Italic" size="13.0" />
+            <Font name="Arial Black" size="12.0" />
          </font></Label>
-      <Label fx:id="brthd" layoutX="246.0" layoutY="120.0" text="BirthDate" textFill="#6af732">
+      <Label fx:id="brthd" layoutX="192.0" layoutY="114.0" text="BirthDate" textFill="#120773">
          <font>
-            <Font name="Segoe UI Black" size="13.0" />
+            <Font name="Arial Black" size="12.0" />
          </font></Label>
       <ImageView fx:id="img" fitHeight="123.0" fitWidth="125.0" layoutX="61.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="55.0" layoutY="235.0" mnemonicParsing="false" onAction="#Follow_action" prefHeight="26.0" prefWidth="62.0" text="Follow" />
-      <Button layoutX="167.0" layoutY="235.0" mnemonicParsing="false" onAction="#block_action" prefHeight="26.0" prefWidth="62.0" text="Block" textFill="#360000" />
-      <Button layoutX="246.0" layoutY="235.0" mnemonicParsing="false" onAction="#mute_action" prefHeight="26.0" prefWidth="78.0" text="Mute" textFill="#ff0a70" />
-      <Label fx:id="followers_conter" layoutX="148.0" layoutY="193.0" text="-1" textFill="#ec1212">
+      <Button layoutX="67.0" layoutY="235.0" mnemonicParsing="false" onAction="#Follow_action" prefHeight="26.0" prefWidth="62.0" text="Follow" textFill="#e71414">
          <font>
-            <Font name="Cooper Black" size="19.0" />
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+      <Button layoutX="157.0" layoutY="235.0" mnemonicParsing="false" onAction="#block_action" prefHeight="26.0" prefWidth="62.0" text="Block" textFill="#e71414">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+      <Button layoutX="246.0" layoutY="235.0" mnemonicParsing="false" onAction="#mute_action" prefHeight="26.0" prefWidth="78.0" text="Mute" textFill="#e71414">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+      <Label fx:id="followers_conter" layoutX="144.0" layoutY="195.0" text="-1" textFill="#ec1212">
+         <font>
+            <Font name="Arial Black" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="following_counter" layoutX="340.0" layoutY="195.0" text="-1" textFill="#cf0f0f">
+      <Label fx:id="following_counter" layoutX="335.0" layoutY="195.0" text="-1" textFill="#cf0f0f">
          <font>
-            <Font name="Cooper Black" size="17.0" />
+            <Font name="Arial Black" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="50.0" layoutY="195.0" text="followers" textFill="#04ef28">
+      <Label layoutX="68.0" layoutY="195.0" text="followers" textFill="#120773">
          <font>
-            <Font name="Cooper Black" size="15.0" />
+            <Font name="Arial Black" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="236.0" layoutY="195.0" text="followings" textFill="#00ff10">
+      <Label layoutX="251.0" layoutY="195.0" text="followings" textFill="#120773">
          <font>
-            <Font name="Cooper Black" size="15.0" />
+            <Font name="Arial Black" size="12.0" />
          </font>
       </Label>
       <ImageView fitHeight="35.0" fitWidth="39.0" layoutX="14.0" layoutY="13.0" onMouseClicked="#showmenu" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Images/menu.jpg" />
+            <Image url="@../Images/image.png" />
          </image>
       </ImageView>
-      <ListView fx:id="post_list" layoutY="267.0" prefHeight="333.0" prefWidth="400.0" />
+      <ListView fx:id="post_list" layoutY="272.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="329.0" prefWidth="400.0" style="-fx-background-color: #fdc407;" />
    </children>
 </AnchorPane>

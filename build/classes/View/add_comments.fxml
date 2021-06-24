@@ -8,7 +8,7 @@
 <AnchorPane id="AnchorPane" maxHeight="600.0" maxWidth="435.0" prefHeight="600.0" prefWidth="396.0" style="-fx-background-color: #fdc407;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Add_commentsController">
    <children>
       <TextArea fx:id="comments" layoutX="90.0" layoutY="90.0" prefHeight="279.0" prefWidth="218.0" style="-fx-background-color: #120773;" />
-      <Button layoutX="111.0" layoutY="447.0" mnemonicParsing="false" onAction="#add_comment" prefHeight="26.0" prefWidth="176.0" text="ADD COMMENTS" textFill="#120773">
+      <Button layoutX="110.0" layoutY="450.0" mnemonicParsing="false" onAction="#add_comment" prefHeight="26.0" prefWidth="176.0" text="ADD COMMENTS" textFill="#120773">
          <font>
             <Font name="Arial Black" size="12.0" />
          </font></Button>

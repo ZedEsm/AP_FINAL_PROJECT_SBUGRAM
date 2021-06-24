@@ -1,12 +1,15 @@
 
 package Controller;
 
+import Model.Post;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import javafx.collections.FXCollections;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -31,11 +35,20 @@ public class Person_profileController{
     ObjectOutputStream out;
     ObjectInputStream in ;
     public String usn;
-    
+    public String mainusername;
+   ArrayList<Post> posts = new ArrayList<>();
+    public ListView<Post> post_list;
     public void init(String s){
         usn=s;
         System.out.println(usn);
         iner();
+        
+    }
+     public void init2(String s){
+        usn=s;
+       // mainusername=mus
+        System.out.println(usn);
+        iner2();
         
     }
     public void Follow_action(ActionEvent act){
@@ -91,6 +104,32 @@ public class Person_profileController{
    
 
     }
+     public void iner2(){
+          Socket clientsocket;
+        try {
+             clientsocket = new Socket("localhost",2020);
+             out = new ObjectOutputStream(clientsocket.getOutputStream());
+             in = new ObjectInputStream(clientsocket.getInputStream());
+                 out.writeObject("select_following_list,"+usn);
+                 out.flush();
+                  int Length = in.readInt();
+              
+                   for (int i = 0; i <Length; i++) {
+                      
+                       Post post= (Post)in.readObject();
+                       posts.add(post);
+                        
+                   }
+//                   post_list.setItems(FXCollections.observableArrayList(posts));
+//                       post_list.setCellFactory(post_list -> new profile_post_items2(usn));
+                    post_list.setItems(FXCollections.observableArrayList(posts));
+                    post_list.setCellFactory(post_list -> new PostItem(usn));
+                
+                
+           }catch(Exception ex){
+            System.out.println(ex);
+        }
+    }
     public void update_info(ActionEvent a){
         String current_user_name = un.getText();
         if(current_user_name.equals(usn)){
@@ -102,6 +141,7 @@ public class Person_profileController{
                 Parent root=loader.load();
                   UPDATE_USER_INFOController mt = loader.getController();
                 mt.init(usn);
+            //    mt.init2(usn);
                  Scene scene = new Scene(root);
                     Stage stage = new Stage();
                     stage.setScene(scene);
