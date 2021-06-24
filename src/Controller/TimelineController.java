@@ -30,7 +30,7 @@ import javafx.stage.Stage;
 public class TimelineController {
 
     
-    ArrayList<Post> posts = new ArrayList<Post>();
+    
     Post currentPost = new Post();
     ObjectOutputStream out;
     ObjectInputStream in ;
@@ -45,13 +45,14 @@ public class TimelineController {
     public void iner(){
          Socket clientsocket;
         try {
+            ArrayList<Post> posts = new ArrayList<Post>();
              clientsocket = new Socket("localhost",2020);
              out = new ObjectOutputStream(clientsocket.getOutputStream());
              in = new ObjectInputStream(clientsocket.getInputStream());
                  out.writeObject("select_following_list,"+usn);
                  out.flush();
                   int Length = in.readInt();
-              
+                  
                   for (int i = 0; i <Length; i++) {
                       
                        Post post= (Post)in.readObject();

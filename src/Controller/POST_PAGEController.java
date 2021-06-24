@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Controller;
 
 import Model.Post;
@@ -27,11 +23,13 @@ public class POST_PAGEController  {
    public Label like;
     public Post p;
     public String usn;
+    public Label post_date;
     int L;
     int R;
      public void init(Post p,String s,int L,int R){
         this.p=p;
         usn=s;
+         System.out.println(L+" "+R);
         post_writer_name.setText(p.getWriter()) ;
         post_title.setText(p.getTitle());
         post_description.setText(p.getDescription());
@@ -39,6 +37,8 @@ public class POST_PAGEController  {
          p.setNumber_of_like(L);
           repost.setText(R+"");
        p.setNumber_of_repost(R);
+     //  p.getPost_delivered_time();
+       post_date.setText(p.getPost_delivered_time().toString());
  
     }
      
@@ -55,6 +55,7 @@ public class POST_PAGEController  {
         post_writer_name.setText(p.getWriter()) ;
         post_title.setText(p.getTitle());
         post_description.setText(p.getDescription());
+        post_date.setText(p.getPost_delivered_time().toString());
      }
       public void view_comments(ActionEvent a){
            try {

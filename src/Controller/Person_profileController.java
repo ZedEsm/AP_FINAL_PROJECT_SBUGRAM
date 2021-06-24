@@ -2,6 +2,7 @@
 package Controller;
 
 import Model.Post;
+import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -16,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -35,7 +37,7 @@ public class Person_profileController{
     ObjectOutputStream out;
     ObjectInputStream in ;
     public String usn;
-    public String mainusername;
+   // public String mainusername;
    ArrayList<Post> posts = new ArrayList<>();
     public ListView<Post> post_list;
     public void init(String s){
@@ -157,6 +159,36 @@ public class Person_profileController{
         
     }
     public void delete_account(ActionEvent a){
+        Socket clientsocket;
+        try {
+             clientsocket = new Socket("localhost",2020);
+             out = new ObjectOutputStream(clientsocket.getOutputStream());
+             in = new ObjectInputStream(clientsocket.getInputStream());
+                 out.writeObject("delete_account,"+usn);
+                 out.flush();
+                  Object os;
+                  os = in.readObject();
+                  String from_Server = os.toString();
+                  if(from_Server.equals("your account deleted")){
+                       Alert alert = new Alert(Alert.AlertType.INFORMATION,from_Server);
+                       alert.setTitle(usn+" deleted account");
+                       alert.showAndWait();
+                       
+                  }
+                  else{
+                       Alert alert = new Alert(Alert.AlertType.ERROR,"failled");
+                       alert.setTitle(usn+" failled to delete");
+                       alert.showAndWait();
+                       
+                  }
+        }catch(Exception ex){
+            System.out.println(ex);
+        }
+        
+       
+        
+        
+        
     }
     public void showmenu(MouseEvent act){
         try {

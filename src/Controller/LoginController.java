@@ -156,79 +156,39 @@ public class LoginController{
     }
             
         public void sign_up(ActionEvent actionEvent){
-         try {
-             //
-//             Parent root;
-//           try {
-//               root = FXMLLoader.load(getClass().getResource("/View/Registe.fxml"));
-//                    Scene scene = new Scene(root);
-//                    Stage stage = new Stage();
-//                     stage.getIcons().add(new Image(Paths.get("87390.png").toUri().toString()));
-//
-//                    stage.setScene(scene);
-//                    stage.show();
-//                   ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-//           } catch (IOException ex) {
-//               System.out.println(ex);
-//           }
-               new PageLoader().load("Registe");
-//              ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-         } catch (IOException ex) {
-             System.out.println(ex);
-         }
+                 try {
+
+               FXMLLoader loader;
+               loader = new FXMLLoader(getClass().getResource("/View/Registe.fxml"));
+                Parent root=loader.load();
+                RegistreController mt = loader.getController();
+                mt.init();
+                 Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+             
+                    stage.show();
+                   ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
     }
+       public void retrieve_password(ActionEvent a){
+              try {
+
+               FXMLLoader loader;
+               loader = new FXMLLoader(getClass().getResource("/View/retretive_pass.fxml"));
+                Parent root=loader.load();
+              Retretive_passController mt = loader.getController();
+              //  mt.init();
+                 Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+             
+                    stage.show();
+                   ((Node)(a.getSource())).getScene().getWindow().hide();
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+       }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   // @FXML
-//    public void initialize(){
-//        TranslateTransition tt = new TranslateTransition(Duration.millis(2000),Login_Button);
-//        tt.setToY(-125);
-//        System.out.println(Login_Button.getLayoutY());
-//        tt.playFromStart();
-//    }
-//     @FXML
-//    //this method is invoked right after the fxml page is loaded
-//    public void initialize() {
-//        //the login button is at lower position at first so we move it upper with transtion
-//        TranslateTransition tt = new TranslateTransition(Duration.millis(2000), login_button);
-//        tt.setToY(-125); //the button will come 125 pixels up
-//        tt.playFromStart();
-//    }
-
-
-//public class LoginController implements Initializable {
-//    
-//    @FXML
-//    private Label label;
-//    
-//    @FXML
-//    private void handleButtonAction(ActionEvent event) {
-//        System.out.println("You clicked me!");
-//        label.setText("Hello World!");
-//    }
-//    
-//    @Override
-//    public void initialize(URL url, ResourceBundle rb) {
-//        // TODO
-//    }    
-//    
-//}
-

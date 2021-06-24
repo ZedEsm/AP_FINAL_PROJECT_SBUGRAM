@@ -84,10 +84,11 @@ public class ProfileController{
                        alert.showAndWait();
                        iner();
                   }
-                  else if(from_Server.equals("you already have this user as following")){
+                  else if(from_Server.indexOf("you unfollow")>=0){
                        Alert alert = new Alert(Alert.AlertType.INFORMATION,from_Server);
-                       alert.setTitle(usn+" is in your following list");
+                       alert.setTitle(usn+" unfollow");
                        alert.showAndWait();
+                       iner();
                   }
                   else{
                        Alert alert = new Alert(Alert.AlertType.ERROR,from_Server);

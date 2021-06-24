@@ -23,6 +23,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -35,12 +36,32 @@ public class RegistreController{
   public TextField lname;
   public TextField usn;
   public TextField psw;
+  public TextField A_Q;
   public DatePicker brd;
   public ImageView img;
   public String picname;
+  public Label Q_A;
+  public String from_Server ;
   
    ObjectInputStream in;
    ObjectOutputStream out;
+   public void init(){
+         try {
+                                     
+                                     Socket clientsocket =new Socket("localhost",2020);
+                                     out = new ObjectOutputStream(clientsocket.getOutputStream());
+                                     in=new ObjectInputStream(clientsocket.getInputStream());
+                                      out.writeObject("select_random_Q,");
+                                      out.flush(); 
+                                      Object os =in.readObject();
+                                      from_Server = os.toString();
+                                      Q_A.setText(from_Server);
+                                      
+                                      
+         }catch(Exception e){
+             System.out.println(e);
+         }
+   }
    
   
   public void registre(ActionEvent actionevent){
@@ -67,7 +88,7 @@ public class RegistreController{
                                      in=new ObjectInputStream(clientsocket.getInputStream());
 
                                    
-                                      String str ="[create_user],"+usn.getText()+","+name.getText()+","+lname.getText()+","+psw.getText()+","+brd.getValue().toString()+","+picname;
+                                      String str ="[create_user],"+usn.getText()+","+name.getText()+","+lname.getText()+","+psw.getText()+","+brd.getValue().toString()+","+picname+","+from_Server+","+A_Q.getText();
                                       
                                     
                                       out.writeObject(str);

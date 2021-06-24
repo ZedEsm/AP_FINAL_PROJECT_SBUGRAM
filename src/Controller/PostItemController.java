@@ -40,13 +40,24 @@ public class PostItemController {
     }
 
     public void see_more(ActionEvent a){
+//               String command = "see_more_of_post,"+post.getWriter()+","+post.getTitle();
+//        Socket clientsocket;
+       
          try {
-
-               FXMLLoader loader;
+        
+//             clientsocket = new Socket("localhost",2020);
+//             out = new ObjectOutputStream(clientsocket.getOutputStream());
+//             in = new ObjectInputStream(clientsocket.getInputStream());
+//                 out.writeObject(command);
+//                 out.flush();
+//                      int LiKe =in.readInt();
+//                      int Repost = in.readInt();
+                     FXMLLoader loader;
                loader = new FXMLLoader(getClass().getResource("/View/POST_PAGE.fxml"));
                 Parent root=loader.load();
                   POST_PAGEController mt = loader.getController();
                 mt.init(post,usn,post.getNumber_of_like(),post.getNumber_of_repost());
+                System.out.println(post.getWriter()+"999"+post.getTitle()+"***"+post.getNumber_of_like()+","+post.getNumber_of_repost());
                  Scene scene = new Scene(root);
                     Stage stage = new Stage();
                     stage.setScene(scene);
