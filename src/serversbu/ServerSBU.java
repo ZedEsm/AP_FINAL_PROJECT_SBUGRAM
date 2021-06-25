@@ -20,7 +20,7 @@ public class ServerSBU extends Application implements Runnable {
       Thread t =new Thread(this);
     static ServerSocket sc;
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) {//bara thread
         ServerSBU sbuv = new ServerSBU();
          sbuv.Tstart(2020);
     }
@@ -31,7 +31,7 @@ public class ServerSBU extends Application implements Runnable {
     }
       
 
-    public void Tstart(int port) {
+    public void Tstart(int port) {//
         try {
              
             sc=new ServerSocket(port);
@@ -52,7 +52,7 @@ public class ServerSBU extends Application implements Runnable {
                   ConnectionHandler c;
                   c = new ConnectionHandler(new ObjectInputStream(s.getInputStream()),new ObjectOutputStream(s.getOutputStream()));
                  new Thread(() -> {
-                         c.listen();
+                         c.listen();//vmite t ye nfr ye chi befreste
                  }).start();
 
 
