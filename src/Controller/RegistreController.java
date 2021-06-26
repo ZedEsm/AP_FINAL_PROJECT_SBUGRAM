@@ -81,6 +81,7 @@ public class RegistreController{
                            if(psw.getText().length()>=8){
                                
                                if(psw.getText().matches("^[a-zA-Z0-9]*$")){
+                                   if(A_Q.getText().length()>0){
                                   try {
                                      
                                      Socket clientsocket =new Socket("localhost",2020);
@@ -129,6 +130,12 @@ public class RegistreController{
                                     }catch (Exception ex) {
                                       System.out.println(ex);
                                     }
+                                   }
+                                else{
+                                    Alert alert = new Alert(Alert.AlertType.ERROR,"ANSWER THE QUESTION");
+                                    alert.setTitle("FIRST ANSWER THE QUESTION :)");
+                                    alert.showAndWait();
+                                }
                                 }
                                 else{
                                     Alert alert = new Alert(Alert.AlertType.ERROR,"Use 8 characters or more for your password");

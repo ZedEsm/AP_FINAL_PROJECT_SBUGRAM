@@ -4,16 +4,33 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="564.0" prefWidth="450.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="Controller.Retretive_passController">
+<AnchorPane id="AnchorPane" maxHeight="600.0" maxWidth="435.0" prefHeight="600.0" prefWidth="396.0" style="-fx-background-color: #fdc407;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Retretive_passController">
    <children>
-      <Label fx:id="quest" layoutX="211.0" layoutY="86.0" text="Label" />
-      <TextField fx:id="ASWQ" layoutX="162.0" layoutY="176.0" prefHeight="26.0" prefWidth="153.0" promptText="answer" />
-      <TextField fx:id="RW" editable="false" layoutX="165.0" layoutY="270.0" promptText="retrieve password" />
-      <Button layoutX="195.0" layoutY="225.0" mnemonicParsing="false" onAction="#check_asw" prefHeight="26.0" prefWidth="86.0" text="check asw" />
-      <Button layoutX="211.0" layoutY="47.0" mnemonicParsing="false" onAction="#loadqa" text="load qa" />
-      <Label layoutX="175.0" layoutY="23.0" text="usernm" />
-      <TextField fx:id="usn" layoutX="280.0" layoutY="19.0" />
+      <Label fx:id="quest" layoutX="102.0" layoutY="213.0" prefHeight="36.0" prefWidth="190.0" textFill="#120773">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Label>
+      <TextField fx:id="ASWQ" layoutX="120.0" layoutY="285.0" prefHeight="46.0" prefWidth="190.0" promptText="answer" />
+      <TextField fx:id="RW" editable="false" layoutX="119.0" layoutY="447.0" prefHeight="46.0" prefWidth="190.0" promptText="retrieve password" />
+      <Button layoutX="119.0" layoutY="373.0" mnemonicParsing="false" onAction="#check_asw" prefHeight="28.0" prefWidth="174.0" text="Chesk Answer" textFill="#e71414">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+      <Button layoutX="123.0" layoutY="154.0" mnemonicParsing="false" onAction="#loadqa" prefHeight="28.0" prefWidth="174.0" text="Load Question" textFill="#e71414">
+         <font>
+            <Font name="Arial Black" size="13.0" />
+         </font></Button>
+      <Label layoutX="160.0" layoutY="46.0" text="UserName :" textFill="#120773">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Label>
+      <TextField fx:id="usn" layoutX="124.0" layoutY="91.0" prefHeight="36.0" prefWidth="174.0" />
+      <Button layoutX="157.0" layoutY="532.0" mnemonicParsing="false" onAction="#loginp" prefHeight="26.0" prefWidth="94.0" text="Login_Page" textFill="#e71414">
+         <font>
+            <Font name="Arial Black" size="11.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

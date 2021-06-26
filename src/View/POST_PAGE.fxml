@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -12,11 +13,11 @@
          <font>
             <Font name="Arial Black" size="13.0" />
          </font></Label>
-      <Label fx:id="post_title" layoutX="45.0" layoutY="368.0" text="post title" textFill="#120773">
+      <Label fx:id="post_title" layoutX="46.0" layoutY="347.0" text="post title" textFill="#120773">
          <font>
             <Font name="Arial Black" size="12.0" />
          </font></Label>
-      <Label fx:id="post_description" layoutX="45.0" layoutY="386.0" prefHeight="42.0" prefWidth="265.0" text="Post Description Can Be Multiple Lines" textFill="#120773">
+      <Label fx:id="post_description" layoutX="45.0" layoutY="396.0" prefHeight="42.0" prefWidth="265.0" text="Post Description Can Be Multiple Lines" textFill="#120773">
          <font>
             <Font name="Arial Black" size="12.0" />
          </font></Label>
@@ -44,25 +45,28 @@
          <font>
             <Font name="Arial Black" size="12.0" />
          </font></Button>
-      <ImageView fitHeight="265.0" fitWidth="311.0" layoutX="42.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="280.0" layoutY="16.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="90.0" text="View Profile" textFill="#120773">
+      <ImageView fitHeight="185.0" fitWidth="311.0" layoutX="42.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="280.0" layoutY="16.0" mnemonicParsing="false" onAction="#view_profile" prefHeight="41.0" prefWidth="90.0" text="View Profile" textFill="#120773">
          <font>
             <Font name="Arial Black" size="11.0" />
          </font>
       </Button>
-      <Button layoutX="26.0" layoutY="440.0" mnemonicParsing="false" text="Repost" textFill="#120773">
+      <Button layoutX="26.0" layoutY="440.0" mnemonicParsing="false" onAction="#repost" text="Repost" textFill="#120773">
          <font>
             <Font name="Arial Black" size="12.0" />
          </font></Button>
-      <Button layoutX="327.0" layoutY="440.0" mnemonicParsing="false" text="Like" textFill="#120773">
+      <Button layoutX="327.0" layoutY="440.0" mnemonicParsing="false" onAction="#like" text="Like" textFill="#120773">
          <font>
             <Font name="Arial Black" size="12.0" />
          </font></Button>
-      <Button layoutX="14.0" layoutY="24.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" text="back to menu" textFill="#120773">
+      <Label fx:id="post_date" layoutX="44.0" layoutY="376.0" text="post date and time" textFill="#e71414">
          <font>
-            <Font name="Arial Black" size="11.0" />
-         </font>
-      </Button>
-      <Label fx:id="post_date" layoutX="144.0" layoutY="506.0" text="post date and time" />
+            <Font name="Arial Black" size="12.0" />
+         </font></Label>
+      <ImageView fitHeight="42.0" fitWidth="36.0" layoutX="14.0" layoutY="16.0"  pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/R2b81e1c4a288b9de549d66216fac727b.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

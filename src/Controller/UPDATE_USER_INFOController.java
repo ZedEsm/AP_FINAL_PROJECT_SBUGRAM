@@ -104,7 +104,7 @@ public class UPDATE_USER_INFOController {
                                                         stage.setScene(scene);
                                                         stage.setTitle(username);
                                                         stage.show();
-                                                     //  ((Node)(act.getSource())).getScene().getWindow().hide();
+                                                   //   ((Node)(act.getSource())).getScene().getWindow().hide();
                                             } catch (IOException ex) {
                                                 System.out.println(ex);
                                             }

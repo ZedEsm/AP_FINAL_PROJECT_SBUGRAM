@@ -70,17 +70,6 @@ public class TimelineController {
     public void refresh(ActionEvent a){
         iner();
     }
-    
-   
-
-//    public void publicPost(ActionEvent actionEvent){
-//        currentPost.setStatus(PrivacyStatus.PUBLIC);
-//    }
-//    public void privatePost(ActionEvent actionEvent){
-//        currentPost.setStatus(PrivacyStatus.PRIVATE);
-//    }
-
-
     public void showmenu(MouseEvent act){
         try {
 

@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -53,7 +54,7 @@ public class UserlistController {
         
     }
     public void Display_Profile(ActionEvent a){
-
+ if(usersbox.getSelectionModel().getSelectedItem()!=null){
       FXMLLoader loader;
            String users_o =  usersbox.getSelectionModel().getSelectedItem().toString();
            try {
@@ -65,13 +66,19 @@ public class UserlistController {
                     Scene scene = new Scene(root);
                     Stage stage = new Stage();
                     stage.setScene(scene);
-                    stage.setTitle(users_o);
+                    stage.setTitle(usn);
       
                     stage.show();
                    ((Node)(a.getSource())).getScene().getWindow().hide();
            } catch (IOException ex) {
                System.out.println(ex);
            }
+    }
+        else{
+             Alert alert = new Alert(Alert.AlertType.ERROR,"list is vide");
+                                            alert.setTitle("ther is no user in list");
+                                            alert.showAndWait();
+        }
 
     }
      public void showmenu(MouseEvent act){

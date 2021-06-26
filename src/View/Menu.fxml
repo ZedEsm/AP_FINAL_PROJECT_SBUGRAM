@@ -14,17 +14,13 @@
          <font>
             <Font name="Arial Black" size="14.0" />
          </font></Button>
-      <Button layoutX="157.0" layoutY="377.0" mnemonicParsing="false" onAction="#new_post" prefHeight="28.0" prefWidth="82.0" text="New Post" textFill="#120773">
+      <Button layoutX="157.0" layoutY="307.0" mnemonicParsing="false" onAction="#new_post" prefHeight="28.0" prefWidth="82.0" text="New Post" textFill="#120773">
          <font>
             <Font name="Arial Black" size="12.0" />
          </font></Button>
-      <Button layoutX="155.0" layoutY="225.0" mnemonicParsing="false" onAction="#prof" prefHeight="32.0" prefWidth="82.0" text="Profile" textFill="#120773">
+      <Button layoutX="155.0" layoutY="225.0" mnemonicParsing="false" onAction="#prof" prefHeight="32.0" prefWidth="82.0" text="Profile" textFill="#e71414">
          <font>
             <Font name="Arial Black" size="14.0" />
-         </font></Button>
-      <Button layoutX="125.0" layoutY="300.0" mnemonicParsing="false" onAction="#LOGoOUT" prefHeight="28.0" prefWidth="145.0" text="Direct Message" textFill="#e71414">
-         <font>
-            <Font name="Arial Black" size="13.0" />
          </font></Button>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="111.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -35,10 +31,15 @@
          <font>
             <Font name="Arial Black" size="13.0" />
          </font></Label>
-      <Button layoutX="155.0" layoutY="423.0" mnemonicParsing="false" onAction="#UserList" prefHeight="28.0" prefWidth="82.0" text="UserList" textFill="#e71414">
+      <Button layoutX="155.0" layoutY="386.0" mnemonicParsing="false" onAction="#UserList" prefHeight="28.0" prefWidth="82.0" text="UserList" textFill="#e71414">
          <font>
-            <Font name="Arial Black" size="11.0" />
+            <Font name="Arial Black" size="12.0" />
          </font></Button>
+      <ImageView fitHeight="38.0" fitWidth="35.0" layoutX="21.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/R2b81e1c4a288b9de549d66216fac727b.jpg" />
+         </image>
+      </ImageView>
 
        </children>
 </AnchorPane>

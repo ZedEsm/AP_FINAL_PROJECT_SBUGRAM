@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 public class MenuController{
 public MenuController(){
@@ -56,7 +57,7 @@ public MenuController(){
                     stage.setTitle(usn);
                   
                     stage.show();
-                   //((Node)(actev.getSource())).getScene().getWindow().hide();
+                   ((Node)(actev.getSource())).getScene().getWindow().hide();
         } catch (IOException ex) {
             System.out.println(ex);
         }
@@ -106,6 +107,24 @@ public MenuController(){
                System.out.println(ex);
            }
     }
+//     public void Go_back_to_timeline(MouseEvent m){
+//            try {
+//
+//               FXMLLoader loader;
+//               loader = new FXMLLoader(getClass().getResource("/View/timeline.fxml"));
+//                Parent root=loader.load();
+//              TimelineController mt = loader.getController();
+//                mt.init(usn);
+//                 Scene scene = new Scene(root);
+//                    Stage stage = new Stage();
+//                    stage.setScene(scene);
+//                    stage.setTitle(usn);
+//                    stage.show();
+//                   ((Node)(m.getSource())).getScene().getWindow().hide();
+//        } catch (IOException ex) {
+//            System.out.println(ex);
+//        }
+//}
 }
 
      

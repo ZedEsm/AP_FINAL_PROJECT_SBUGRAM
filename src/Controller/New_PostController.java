@@ -99,6 +99,23 @@ public void Publish_m(ActionEvent act){
                       post_message.setText("");
                       post_title.setText(""); 
             }
+                try {
+
+               FXMLLoader loader;
+               loader = new FXMLLoader(getClass().getResource("/View/timeline.fxml"));
+                Parent root=loader.load();
+                TimelineController mt = loader.getController();
+                mt.init(usn);
+                 Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.setTitle(usn);
+                    stage.show();
+                   ((Node)(act.getSource())).getScene().getWindow().hide();
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+
           }
            else{
                  Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -113,5 +130,23 @@ public void Publish_m(ActionEvent act){
         }
       
 }
+//     public void Go_back_to_timeline(MouseEvent m){
+//            try {
+//
+//               FXMLLoader loader;
+//               loader = new FXMLLoader(getClass().getResource("/View/timeline.fxml"));
+//                Parent root=loader.load();
+//              TimelineController mt = loader.getController();
+//                mt.init(usn);
+//                 Scene scene = new Scene(root);
+//                    Stage stage = new Stage();
+//                    stage.setScene(scene);
+//                    stage.setTitle(usn);
+//                    stage.show();
+//                   ((Node)(m.getSource())).getScene().getWindow().hide();
+//        } catch (IOException ex) {
+//            System.out.println(ex);
+//        }
+//}
     
 }

@@ -1,6 +1,7 @@
 
 package Controller;
 
+import Model.PageLoader;
 import Model.Post;
 import java.io.File;
 import java.io.IOException;
@@ -173,6 +174,8 @@ public class Person_profileController{
                        Alert alert = new Alert(Alert.AlertType.INFORMATION,from_Server);
                        alert.setTitle(usn+" deleted account");
                        alert.showAndWait();
+                    
+                     
                        
                   }
                   else{
@@ -181,6 +184,7 @@ public class Person_profileController{
                        alert.showAndWait();
                        
                   }
+                  
         }catch(Exception ex){
             System.out.println(ex);
         }

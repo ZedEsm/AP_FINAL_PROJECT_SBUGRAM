@@ -1,10 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Controller;
 
+import Model.PageLoader;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -12,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -85,6 +84,14 @@ public class Retretive_passController {
                       alert.showAndWait();
         }
         
+    }
+    public void loginp(ActionEvent a){
+        try {
+            new PageLoader().load("FXMLDocument");
+            ((Node)(a.getSource())).getScene().getWindow().hide();
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
     }
     
     
