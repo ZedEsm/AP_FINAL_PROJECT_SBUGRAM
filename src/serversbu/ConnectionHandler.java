@@ -1,3 +1,4 @@
+
 package serversbu;
 import java.io.*;
 import java.util.Map;
@@ -88,7 +89,7 @@ public class ConnectionHandler {
                                 fot.close();
                           
                                FileOutputStream fot1 = new FileOutputStream(wa+"_follower.dat", true);
-                                //out.println("serve");
+                                System.out.println("serve");
                            
                                 fot1.close();
                             
@@ -98,11 +99,7 @@ public class ConnectionHandler {
                                 fot2.close();
                                 FileOutputStream user_posts = new FileOutputStream(wa+"_posts.dat",true);
                                 user_posts.close();
-                                 FileOutputStream fotm = new FileOutputStream(wa+"_mute.dat", true);
-                                //out.println("serve");
-                           
-                                fotm.close();
-                                //out.println("se11rve");
+                                System.out.println("se11rve");
                                 String question = cmd[7];
                                 String answer = cmd[8];
                                 String fiile_name = cmd[1]+"_question.dat";
@@ -112,7 +109,7 @@ public class ConnectionHandler {
                                 outputStream.writeObject(new String("registred,"+cmd[6]));
                                 outputStream.flush();
                                 System.out.println(cmd[1]+" register "+cmd[6]);
-                                System.out.println("time: "+new Date().toString());
+                                System.out.println(new java.util.Date().toString());
                                 userexist=false;///****
                             }
                             else{
@@ -211,7 +208,8 @@ public class ConnectionHandler {
                                           
                                           outputStream.flush();
                                           userexist = true;
-                                          System.out.println("action: "+" connect,Login");
+                                      
+                                              System.out.println("action: "+" connect,Login");
                                           System.out.println(cmd[1]+" Login");
                                           System.out.println(new java.util.Date().toString());
                                           break;
@@ -247,7 +245,7 @@ public class ConnectionHandler {
                                       user_list.add(a[0]);
                                        String usnn=cmd[1];
                                        FileInputStream finn = new FileInputStream(user_list.get(0)+"_follower.dat");
-                                         //out.println("folo12==="+finn.available());
+                                        
                                         byte[] byt1 = new byte[finn.available()];
                                         finn.read(byt1);
                                         String followers = new String(byt1);
@@ -259,11 +257,11 @@ public class ConnectionHandler {
                                         else{
                                            asw1=new String[0];
                                         }
-//                                        File vfo = new File(usnn+v2);
+//                                      
                                         
                                         FileInputStream followi = new FileInputStream(user_list.get(0)+"_following.dat");
-//                                       FileInputStream followi = new FileInputStream(usnn+vfo);
-                                        //out.println("fpppp==="+followi.available());
+//                                 
+                                  
                                         byte[] byt2 = new byte[followi.available()];
                                         followi.read(byt2);
                                         String following = new String(byt2);
@@ -276,7 +274,6 @@ public class ConnectionHandler {
                                            asw2=new String[0];
                                         }
                                         
-                                        //out.println("fpppp===9999999");
                                         if(user_list.size()>0){
                                             outputStream.writeObject(new String(a[1]+","+a[2]+","+a[4]+","+a[5]+","+asw1.length+","+asw2.length+","+a[3]));
                                             outputStream.flush();
@@ -333,12 +330,6 @@ public class ConnectionHandler {
                     }
                  
                     else if(cmd[0].equalsIgnoreCase("[New_Post]")){
-                         
-                 
-                              
-                           
-                                
-                     
                           CopyOnWriteArrayList<Post> post_list = new CopyOnWriteArrayList<Post>();
                         String pst = cmd[1];
                         String pme = cmd[2];
@@ -362,7 +353,13 @@ public class ConnectionHandler {
                              fop1.close();
                           outputStream.writeObject(new String("post is delivered successfuly"));
                           outputStream.flush();
-                                                
+                          
+                                   System.out.println("["+p.getWriter()+"]"+" publish ");
+                          System.out.println("message: "+p.getTitle()+" "+p.getWriter());
+                          System.out.println("time: "+new Date().toString());
+                              
+                           
+                                
                       
                     }
                      else if(cmd[0].equalsIgnoreCase("choose_follower")){
@@ -379,7 +376,7 @@ public class ConnectionHandler {
                                         
                                             FileOutputStream finn = new FileOutputStream(user_list.get(1)+"_following.dat",true);
                                          
-                                            finn.write((user_list.get(0)+"\n").getBytes());
+                                           finn.write((user_list.get(0)+"\n").getBytes());
                                             finn.close();
 
                                              FileOutputStream finn1 = new FileOutputStream(user_list.get(0)+"_follower.dat",true);
@@ -388,6 +385,10 @@ public class ConnectionHandler {
                                             finn1.close();
                                              outputStream.writeObject("follower added succssesfully");
                                              outputStream.flush();
+                                              System.out.println("action: follow");
+                                            System.out.println("["+cmd[2]+"]"+" action");
+                                            System.out.println("message: "+"["+cmd[1]+"]");  
+                                            System.out.println("time: "+new Date().toString());
                             
                                         }
                                         else{
@@ -419,15 +420,14 @@ public class ConnectionHandler {
                                             
                                              outputStream.writeObject("you unfollow "+user_list.get(0));
                                              outputStream.flush();
-                                            System.out.println("action: follow, unfollow");
-                                            System.out.println("["+cmd[1]+"]"+" action");
-                                            System.out.println("message: "+"["+cmd[2]+"]");  
+                                              System.out.println("action: unfollow");
+                                            System.out.println("["+cmd[2]+"]"+" action");
+                                            System.out.println("message: "+"["+cmd[1]+"]");  
                                             System.out.println("time: "+new Date().toString());
                                         }
                            
                      }
                    else if(cmd[0].equalsIgnoreCase("select_following_list")){
-                        
                         CopyOnWriteArrayList<String> user_list = new CopyOnWriteArrayList<String>();
                       //  String main_usn = cmd[1];
                       user_list.add(cmd[1]);
@@ -437,17 +437,17 @@ public class ConnectionHandler {
                         String following_list = new String(byt1);
                         following_list.trim();
                         fi.close();//following haro khondim
-                        
+                        System.out.println("serbbbbbbbbb");
                         FileInputStream fip = new FileInputStream(user_list.get(0)+"_posts.dat");
                         byte[] byt2 = new byte[fip.available()];
                         fip.read(byt2);//post ha khodesh ro khondim
                         String posts = new String(byt2);
                         fip.close();
-                         //out.println("serbbbbbbbbb33333");
+                         System.out.println("serbbbbbbbbb33333");
                        // ArrayList<Post> post_list = new ArrayList<Post>();
                         CopyOnWriteArrayList<Post> post_list = new CopyOnWriteArrayList<Post>();
                         String[] post_line=posts.split("\n");
-                        //out.println("serbbbbbbbbb32223333***"+post_line.length);
+                        System.out.println("serbbbbbbbbb32223333***"+post_line.length);
                         if(post_line.length>0){
                             for (int i = 0; i < post_line.length; i++) {
                                 String current_post = post_line[i];
@@ -471,20 +471,20 @@ public class ConnectionHandler {
                                 }
                             }//tah for
                         }
-                        //out.println("serversbu000000000000000000");
+                        
                         String[] following_file=following_list.split("\n");
                         if(following_file.length>0){
                           for (int i = 0; i < following_file.length; i++) {
                             String following_name = following_file[i];
                             if(following_name.trim().length()>0){
-                             //out.println(following_name);
+                             System.out.println(following_name);
                             FileInputStream fip3 = new FileInputStream(following_name+"_posts.dat");
                             
                             byte[] byt3 = new byte[fip3.available()];
                             fip3.read(byt3);//post ha khodesh ro khondim
                             String posts3 = new String(byt3);
                             fip3.close();
-                           //out.println(following_name);
+                           System.out.println(following_name);
                             String[] post3_line=posts3.split("\n");
                             if(post3_line.length>0){
                                for ( int j = 0; j < post3_line.length; j++) {
@@ -512,9 +512,9 @@ public class ConnectionHandler {
                           }
                           }
                         }
-                  //      System.out.println(post_list.toString());
+                        System.out.println(post_list.toString());
                         Object[] post_array=post_list.toArray();
-                        //out.println(post_array.length);
+                    //    System.out.println(post_array.length);
                         for (int i = 0; i < post_array.length; i++) {
                             for (int j = 0; j < post_array.length-1; j++) {
                                                 
@@ -530,17 +530,18 @@ public class ConnectionHandler {
                         }
                                           
                         Post[] xL = new Post[post_array.length];
-                        //out.println(xL);
+                       // System.out.println(xL);
                         outputStream.writeInt(xL.length);
                         outputStream.flush();
                         for (int i = 0; i <xL.length; i++) {
                             xL[i]=(Post)post_array[i];
                             outputStream.writeObject(xL[i]);
                             outputStream.flush();
+                 
                         }
-                 System.out.println(cmd[1]+" get posts list");
-                        System.out.println("time: "+new Date().toString());
-//                                        
+                                  System.out.println(cmd[1]+" get posts list");
+                           System.out.println("time: "+new Date().toString());
+                                        
                             
                     }
                     else if(cmd[0].equalsIgnoreCase("[update_user_inform]")){
@@ -568,7 +569,7 @@ public class ConnectionHandler {
                                  file_content=before+after;
                                  file_content+=user_list.get(0)+","+user_list.get(1)+","+user_list.get(2)+","+user_list.get(3)+","+user_list.get(4)+","+user_list.get(5)+"\n";
                                  FileOutputStream fot = new FileOutputStream(file_name);
-                                 // System.out.println(file_content);
+                                  System.out.println(file_content);
                                 fot.write(file_content.getBytes());
                                 fot.close();
                                   outputStream.writeObject("change user info successfully done");
@@ -576,7 +577,7 @@ public class ConnectionHandler {
                                   //agar yeki bod suucc
                                  
                               } catch (Exception ex) {
-                                  System.out.println(ex);
+                                  System.out.println(ex+"00");
                               }
                             }
                     }
@@ -731,6 +732,8 @@ public class ConnectionHandler {
                         f.delete();
                           f = new File(deleteac_list.get(0)+"_question.dat");
                         f.delete();
+                         f = new File(deleteac_list.get(0)+"_mute.dat");
+                        f.delete();
                         File g = new File("D:\\java\\ServerSBU");
                         File[] glist= g.listFiles();
                         for (int i = 0; i < glist.length; i++) {
@@ -738,7 +741,7 @@ public class ConnectionHandler {
                              if(file.getName().startsWith(deleteac_list.get(0)) && file.getName().endsWith("_comments.dat")){
                                  file.delete();
                              }
-                            // System.out.println(file.getName());
+                             System.out.println(file.getName());
                         }
                         FileInputStream fip = new FileInputStream(deleteac_list.get(1));
                         byte[] byt2 = new byte[fip.available()];
@@ -797,74 +800,12 @@ public class ConnectionHandler {
                         
                         
                       }
-                       else if(cmd[0].equalsIgnoreCase("Mute")){
-                           System.out.println("Co6ww");  
-                           boolean  ffm =false;
-                        CopyOnWriteArrayList<String> user_list = new CopyOnWriteArrayList<String>();
-                         user_list.add(cmd[2]);//alimainusn
-                        user_list.add(cmd[1]);
-                         FileInputStream finz = new FileInputStream(user_list.get(0)+"_following.dat");//mainuser
-                        byte[] bytz = new byte[finz.available()];
-                        finz.read(bytz);//following taraf maain user ro khonde
-                        
-                        String fie_contentz = new String(bytz);//followinga to inan
-                        finz.close();
-                    if(fie_contentz.indexOf(user_list.get(1))>0){//age adame ke mute mihaym konim to list following hamon hast
-                        FileInputStream fin = new FileInputStream(user_list.get(0)+"_mute.dat");//file mute hamon ro mikhonim
-                        byte[] byt = new byte[fin.available()];
-                        fin.read(byt);
-                       
-                        String fie_content = new String(byt);//list mute ha
-                         fin.close();
-                        if(fie_content.trim().length()>0){//age list muta>0 bod
-                            String[] mutedl=fie_content.split("\n");
-                             for (int i = 0; i <mutedl.length; i++) {
-                                String current_muteduser = mutedl[i];
-                                if(current_muteduser.equals(user_list.get(1))){//age taraf ke mikhaym mute konim to list muta bod
-
-                                    int IDX = fie_content.indexOf(user_list.get(1));
-                                                int Idx1 = fie_content.indexOf("\n",IDX);
-                                                String before = fie_content.substring(0,IDX);
-                                                String after =fie_content.substring(Idx1+1);
-                                                 FileOutputStream finn1 = new FileOutputStream(user_list.get(0)+"_mute.dat");
-                                                 finn1.write((before+after).getBytes());
-                                                 finn1.close();
-                                                 ffm=true;
-                                                 break;
-                                }
-                             }
-                             if(ffm==false){//age to list muta nabaod
-                                   FileOutputStream fip = new FileOutputStream(user_list.get(0)+"_mute.dat");
-                                    fip.write((user_list.get(1).toString()+"\n").getBytes());
-                                    outputStream.writeObject( user_list.get(1)+" muted");
-                                    outputStream.flush();
-                             }
-                             else{//age to list muta bod unmute mishe
-                                 ffm=false;
-                                  outputStream.writeObject( user_list.get(1)+" unmuted");
-                                  outputStream.flush();
-                             }
-                        }
-                        else{
-                             FileOutputStream fip = new FileOutputStream(user_list.get(0)+"_mute.dat");
-                             fip.write((user_list.get(1).toString()+"\n").getBytes());
-                             outputStream.writeObject( user_list.get(1)+" muted");
-                             outputStream.flush();
-                        }
-                        }
-                     else{
-                     }//payam else 
-                       }
 //                 
                 }
       
                 
             } catch (IOException ex) {
-                try {
-                    outputStream.writeObject(ex.getMessage());
-                    outputStream.flush();
-                } catch (IOException ex1) {
-                }
+                System.out.println(ex+"conioex");
                
             } catch (ClassNotFoundException ex) {
              System.out.println(ex+"concnotfo");
@@ -876,3 +817,4 @@ public class ConnectionHandler {
         }
     }
 }
+
